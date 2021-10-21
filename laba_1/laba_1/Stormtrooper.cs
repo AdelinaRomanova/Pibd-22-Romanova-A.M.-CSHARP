@@ -48,28 +48,28 @@ namespace laba_1
 			{
 				// вправо
 				case Direction.Right:
-					if (_startPosX + step < _pictureWidth - planeWidth)
+					if (_startPosX + step + 35 < _pictureWidth - planeWidth)
 					{
 						_startPosX += step;
 					}
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX - step > 0)
+					if (_startPosX - step - 25 > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY - step > 0)
+					if (_startPosY - step - 90 > 0)
 					{
 						_startPosY -= step;
 					}
 					break;
 				//вниз
 				case Direction.Down:
-					if (_startPosY + step < _pictureHeight - planeHeight)
+					if (_startPosY + step + 5 < _pictureHeight - planeHeight)
 					{
 						_startPosY += step;
 					}
