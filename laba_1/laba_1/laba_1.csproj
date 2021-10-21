@@ -53,6 +53,7 @@
     <Compile Include="FormPlane.Designer.cs">
       <DependentUpon>FormPlane.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
