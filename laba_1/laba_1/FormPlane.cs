@@ -12,11 +12,12 @@ namespace laba_1
 {
     public partial class FormPlane : Form
     {
-        private Plane plane;
+        private ITransport plane;
         public FormPlane()
         {
             InitializeComponent();
         }
+		//метод отрисовки самолёта
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
@@ -24,16 +25,22 @@ namespace laba_1
             plane.DrawTransport(gr);
             pictureBoxPlane.Image = bmp;
         }
-
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            plane = new Plane();
-            plane.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
-            plane.SetPosition(rnd.Next(10, 400), rnd.Next(10, 400), pictureBoxPlane.Width, pictureBoxPlane.Height);
-            Draw();
-        }
-
+		//Обработка нажатия кнопки "Создать самолёт"
+		private void buttonCreatePlane_Click(object sender, EventArgs e)
+		{
+			Random rnd = new Random();
+			plane = new Warplane(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black);
+			plane.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxPlane.Width,pictureBoxPlane.Height);
+			Draw();
+		}
+		//Обработка нажатия кнопки "Создать штурмовик"
+		private void buttonCreateStormtrooper_Click(object sender, EventArgs e)
+		{
+			Random rnd = new Random();
+			plane = new Stormtrooper(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
+			plane.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxPlane.Width,pictureBoxPlane.Height);
+			Draw();
+		}
 		private void buttonMove_Click(object sender, EventArgs e)
 		{
 			//получаем имя кнопки
@@ -87,5 +94,7 @@ namespace laba_1
 			}
 			Draw();
 		}
-	}
+
+       
+    }
 }

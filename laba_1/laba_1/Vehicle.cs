@@ -14,9 +14,9 @@ namespace laba_1
 		protected int _pictureWidth;/// Ширина окна отрисовки
 		protected int _pictureHeight;/// Высота окна отрисовки
 
-		public int MaxSpeed { private set; get; }/// Максимальная скорость
-		public float Weight { private set; get; }/// Вес штурмовика
-		public Color MainColor { private set; get; } /// Основной цвет штурмовика
+		public int MaxSpeed { protected set; get; }/// Максимальная скорость
+		public float Weight { protected set; get; }/// Вес штурмовика
+		public Color MainColor { protected set; get; } /// Основной цвет штурмовика
 		public void SetPosition(int x, int y, int width, int height) {
 			_startPosX = x;
 			_startPosY = y;
