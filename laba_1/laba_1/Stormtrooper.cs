@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace laba_1
 {
-	class Plane
+	class Stormtrooper
 	{
 		private float _startPosX; /// Левая координата отрисовки штурмовика
 		private float _startPosY;/// Правая кооридната отрисовки штурмовика

@@ -12,7 +12,7 @@ namespace laba_1
 {
     public partial class FormPlane : Form
     {
-        private Plane plane;
+        private Stormtrooper storm;
         public FormPlane()
         {
             InitializeComponent();
@@ -21,16 +21,16 @@ namespace laba_1
         {
             Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            plane.DrawTransport(gr);
+			storm.DrawTransport(gr);
             pictureBoxPlane.Image = bmp;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            plane = new Plane();
-            plane.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
-            plane.SetPosition(rnd.Next(10, 400), rnd.Next(10, 400), pictureBoxPlane.Width, pictureBoxPlane.Height);
+			storm = new Stormtrooper();
+			storm.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
+			storm.SetPosition(rnd.Next(10, 400), rnd.Next(10, 400), pictureBoxPlane.Width, pictureBoxPlane.Height);
             Draw();
         }
 
@@ -41,9 +41,9 @@ namespace laba_1
 			switch (name)
 			{
 				case "buttonUp":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Up);
+						storm.MoveTransport(Direction.Up);
 					}
 					else
 					{
@@ -52,9 +52,9 @@ namespace laba_1
 					}
 					break;
 				case "buttonDown":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Down);
+						storm.MoveTransport(Direction.Down);
 					}
 					else
 					{
@@ -63,9 +63,9 @@ namespace laba_1
 					}
 					break;
 				case "buttonLeft":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Left);
+						storm.MoveTransport(Direction.Left);
 					}
 					else
 					{
@@ -74,9 +74,9 @@ namespace laba_1
 					}
 					break;
 				case "buttonRight":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Right);
+						storm.MoveTransport(Direction.Right);
 					}
 					else
 					{
