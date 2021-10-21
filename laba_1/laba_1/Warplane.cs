@@ -9,8 +9,8 @@ namespace laba_1
 {
 	public class Warplane : Vehicle
 	{
-		protected readonly int planeWidth = 190;
-		protected readonly int planeHeight = 120;
+		protected readonly int planeWidth = 240;
+		protected readonly int planeHeight = 150;
 		public Warplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
@@ -32,28 +32,28 @@ namespace laba_1
 			{
 				// вправо
 				case Direction.Right:
-					if (_startPosX + step < _pictureWidth - planeWidth)
+					if (_startPosX + step  + 70 < _pictureWidth - planeWidth)
 					{
 						_startPosX += step;
 					}
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX + step > 0)
+					if (_startPosX + step - 30 > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY + step > 0)
+					if (_startPosY + step - 100 > 0) 
 					{
 						_startPosY -= step;
 					}
 					break;
 				//вниз
 				case Direction.Down:
-					if (_startPosY + step < _pictureHeight - planeHeight)
+					if (_startPosY + step + 30 < _pictureHeight - planeHeight)
 					{
 						_startPosY += step;
 					}
