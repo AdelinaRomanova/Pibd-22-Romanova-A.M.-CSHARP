@@ -9,8 +9,8 @@ namespace laba_1
 {
 	public class Warplane : Vehicle
 	{
-		protected readonly int planeWidth = 90;
-		protected readonly int planeHeight = 50;
+		protected readonly int planeWidth = 190;
+		protected readonly int planeHeight = 120;
 		public Warplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
