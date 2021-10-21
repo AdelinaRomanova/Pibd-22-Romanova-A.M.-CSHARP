@@ -214,22 +214,6 @@ namespace laba_1
 				g.DrawPolygon(pen2, pol8);
 				g.FillPolygon(fill4, pol8);
 			}
-
-
-			////Дверь
-			//g.DrawRectangle(pen, _startPosX + 70, _startPosY + 25, 20, 35);
-			////Окна
-			//g.DrawEllipse(pen, _startPosX + 5, _startPosY + 10, 18, 28); //первое
-			//g.DrawEllipse(pen, _startPosX + 5 + 18 + 17, _startPosY + 10, 18, 28); //второе
-			//for (int n = 5; n < (5 + 18) * 4; n += 5 + 18)
-			//{
-			//	g.DrawEllipse(pen, _startPosX + 5 + 18 + 17 + 50 + n, _startPosY + 10, 18, 28);
-			//}
-			////Колёса
-			//g.FillEllipse(fill, _startPosX + 20, _startPosY + 50, 25, 25); //заливка
-			//g.DrawEllipse(pen, _startPosX + 20, _startPosY + 50, 25, 25); //заднее
-			//g.FillEllipse(fill, _startPosX + 190 - 20 - 25, _startPosY + 50, 25, 25);//заливка
-			//g.DrawEllipse(pen, _startPosX + 190 - 20 - 25, _startPosY + 50, 25, 25);//переднее
 		}
 	}
 }
