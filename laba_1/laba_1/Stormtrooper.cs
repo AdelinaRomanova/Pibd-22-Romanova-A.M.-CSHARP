@@ -17,7 +17,7 @@ namespace laba_1
 		private readonly int planeHeight = 120;/// Высота отрисовки штурмовика
 		public int MaxSpeed { private set; get; }/// Максимальная скорость
 		public float Weight { private set; get; }/// Вес штурмовика
-		public Color MainColor { private set; get; } /// Основной цвет кштурмовика
+		public Color MainColor { private set; get; } /// Основной цвет штурмовика
 		public Color DopColor { private set; get; } /// Дополнительный цвет
 		public bool Wings { private set; get; }/// Признак наличия крыльев
 		public bool Gun { private set; get; }  /// Признак наличия пушек
