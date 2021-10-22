@@ -13,8 +13,8 @@ namespace laba_1
 		private float _startPosY;/// Правая кооридната отрисовки штурмовика
 		private int _pictureWidth;/// Ширина окна отрисовки
 		private int _pictureHeight;/// Высота окна отрисовки
-		private readonly int planeWidth = 200;/// Ширина отрисовки штурмовика
-		private readonly int planeHeight = 120;/// Высота отрисовки штурмовика
+		private readonly int planeWidth = 205;/// Ширина отрисовки штурмовика
+		private readonly int planeHeight = 130;/// Высота отрисовки штурмовика
 		public int MaxSpeed { private set; get; }/// Максимальная скорость
 		public float Weight { private set; get; }/// Вес штурмовика
 		public Color MainColor { private set; get; } /// Основной цвет штурмовика
@@ -69,7 +69,7 @@ namespace laba_1
 					break;
 				//вниз
 				case Direction.Down:
-					if (_startPosY + step + 5 < _pictureHeight - planeHeight)
+					if (_startPosY + step + 5< _pictureHeight - planeHeight)
 					{
 						_startPosY += step;
 					}
