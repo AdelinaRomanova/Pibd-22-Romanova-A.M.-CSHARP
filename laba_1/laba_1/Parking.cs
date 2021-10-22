@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace laba_1
@@ -13,8 +14,8 @@ namespace laba_1
         private readonly T[] _places; //массив объектов, которые храним
         private readonly int pictureWidht; //ширина отрисовки окна
         private readonly int pictureHeight; //высота отрисовки окна
-        private readonly int _placeSizeWidht = 190; //ширина парковочного места
-        private readonly int _placeSizeHeight = 120; //высота парковочного места
+        private readonly int _placeSizeWidht = 280; //ширина парковочного места
+        private readonly int _placeSizeHeight = 240; //высота парковочного места
 
         public Parking(int picWidht, int picHeight) {
             int widht = picWidht / _placeSizeWidht;
@@ -24,27 +25,38 @@ namespace laba_1
             pictureHeight = picHeight;
         } //конструктор
 
-        public static bool operator +(Parking<T> p, T plane) {
+        public static int operator +(Parking<T> p, T plane) {
             for (int i = 0; i < p._places.Length; i++) {
                 if (p._places[i] == null)
                 {
                     p._places[i] = plane;
-                    return true;
+                    p._places[i].SetPosition(8 + i % 3 * p._placeSizeWidht, i / 3 * p._placeSizeHeight + 5, p.pictureWidht, p.pictureHeight);
+                    return i;
                 }
             }
-            return false;
+            return -1;
         } //перегрузка оператора сложения
 
-        public static T operator -(Parking<T> p, int index) {
-            for (int i = 0; i < p._places.Length; i++)
+        public static T operator -(Parking<T> p, int index)
+        {
+            if (index > 0 && index < p._places.Length)
             {
-                if (i == index) { }
-                T plane = p._places[index];
-                p._places[i] = null;
-                return plane;
+                if (p._places[index] != null)
+                {
+                    T plane = p._places[index];
+                    p._places[index] = null;
+                    return plane;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            return null;
-        } //перегрузка оператора вычитания
+            else {
+                return null;
+            }
+
+        }//перегрузка оператора вычитания
 
         public void Draw(Graphics g) {
             DrawMarking(g);
@@ -55,14 +67,12 @@ namespace laba_1
 
         private void DrawMarking(Graphics g) {
             Pen pen = new Pen(Color.Black, 3);
-            for (int i = 0; i < pictureWidht / _placeSizeWidht; i++) { 
+            for (int i = 0; i < pictureWidht / _placeSizeWidht; i++) {
                 for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
-                {//линия рамзетки места
-                    g.DrawLine(pen, i * _placeSizeWidht, j * _placeSizeHeight, i *
-                   _placeSizeWidht + _placeSizeWidht / 2, j * _placeSizeHeight);
-                }
-                g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht,
-               (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+                {
+                    g.DrawLine(pen, i * _placeSizeWidht, j * _placeSizeHeight, i * _placeSizeWidht + _placeSizeWidht / 3, j * _placeSizeHeight);
+                }//линия рамзетки места
+                g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         }
 

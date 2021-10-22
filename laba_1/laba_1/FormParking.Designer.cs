@@ -47,13 +47,13 @@ namespace laba_1
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(645, 450);
+            this.pictureBoxParking.Size = new System.Drawing.Size(1206, 617);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
             // buttonSetPlane
             // 
-            this.buttonSetPlane.Location = new System.Drawing.Point(664, 12);
+            this.buttonSetPlane.Location = new System.Drawing.Point(1225, 25);
             this.buttonSetPlane.Name = "buttonSetPlane";
             this.buttonSetPlane.Size = new System.Drawing.Size(127, 82);
             this.buttonSetPlane.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace laba_1
             // 
             // buttonSetStorm
             // 
-            this.buttonSetStorm.Location = new System.Drawing.Point(664, 100);
+            this.buttonSetStorm.Location = new System.Drawing.Point(1225, 113);
             this.buttonSetStorm.Name = "buttonSetStorm";
             this.buttonSetStorm.Size = new System.Drawing.Size(127, 57);
             this.buttonSetStorm.TabIndex = 2;
@@ -77,7 +77,7 @@ namespace laba_1
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Controls.Add(this.buttonTakePlane);
-            this.groupBox.Location = new System.Drawing.Point(651, 172);
+            this.groupBox.Location = new System.Drawing.Point(1212, 185);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(146, 221);
             this.groupBox.TabIndex = 3;
@@ -86,7 +86,7 @@ namespace laba_1
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(10, 94);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 94);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(121, 83);
             this.pictureBox2.TabIndex = 3;
@@ -123,7 +123,7 @@ namespace laba_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1382, 617);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonSetStorm);
             this.Controls.Add(this.buttonSetPlane);

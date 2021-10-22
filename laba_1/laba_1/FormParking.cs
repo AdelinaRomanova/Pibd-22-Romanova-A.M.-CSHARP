@@ -36,14 +36,8 @@ namespace laba_1
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var plane = new Warplane(100, 1000, dialog.Color);
-                if (parking + plane)
-                {
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Парковка переполнена");
-                }
+                int place = parking + plane;
+                Draw();
             } //обработка нажатия кнопки "Приземлить военный самолёт"
         }
 
@@ -56,14 +50,8 @@ namespace laba_1
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var plane = new Stormtrooper(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                    if (parking + plane)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
+                    int place = parking + plane;
+                    Draw();
                 }
             }
         }
@@ -81,7 +69,7 @@ namespace laba_1
                 }
                 Draw();
             }
-
         }
     }
 }
+
