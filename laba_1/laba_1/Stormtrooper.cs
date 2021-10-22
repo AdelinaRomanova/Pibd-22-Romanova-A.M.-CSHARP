@@ -13,8 +13,8 @@ namespace laba_1
 		private float _startPosY;/// Правая кооридната отрисовки штурмовика
 		private int _pictureWidth;/// Ширина окна отрисовки
 		private int _pictureHeight;/// Высота окна отрисовки
-		private readonly int planeWidth = 205;/// Ширина отрисовки штурмовика
-		private readonly int planeHeight = 130;/// Высота отрисовки штурмовика
+		private readonly int planeWidth = 250;/// Ширина отрисовки штурмовика
+		private readonly int planeHeight = 230;/// Высота отрисовки штурмовика
 		public int MaxSpeed { private set; get; }/// Максимальная скорость
 		public float Weight { private set; get; }/// Вес штурмовика
 		public Color MainColor { private set; get; } /// Основной цвет штурмовика
@@ -48,28 +48,28 @@ namespace laba_1
 			{
 				// вправо
 				case Direction.Right:
-					if (_startPosX + step + 35 < _pictureWidth - planeWidth)
+					if (_startPosX + step < _pictureWidth - planeWidth)
 					{
 						_startPosX += step;
 					}
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX - step - 25 > 0)
+					if (_startPosX - step > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY - step - 90 > 0)
+					if (_startPosY - step > 0)
 					{
 						_startPosY -= step;
 					}
 					break;
 				//вниз
 				case Direction.Down:
-					if (_startPosY + step + 5< _pictureHeight - planeHeight)
+					if (_startPosY + step < _pictureHeight - planeHeight)
 					{
 						_startPosY += step;
 					}
@@ -89,27 +89,30 @@ namespace laba_1
 			Brush fill3 = new SolidBrush(Color.FromArgb(109, 54, 54));
 			Brush fill4 = new SolidBrush(Color.FromArgb(239, 52, 62));
 			Brush fill5 = new SolidBrush(Color.FromArgb(240, 96, 0));
+			int p = 30;
+			int t = 100;
+
 
 			if (Gun)
 			{ //пушки
-				g.DrawEllipse(pen2, _startPosX + 40, _startPosY - 30, 40, 20);
-				g.FillEllipse(fill3, _startPosX + 40, _startPosY - 30, 40, 20);
-				g.DrawEllipse(pen2, _startPosX + 45, _startPosY - 50, 27, 15);
-				g.FillEllipse(fill3, _startPosX + 45, _startPosY - 50, 27, 15);
-				g.DrawEllipse(pen2, _startPosX + 40, _startPosY + 40, 40, 20);
-				g.FillEllipse(fill3, _startPosX + 40, _startPosY + 40, 40, 20);
-				g.DrawEllipse(pen2, _startPosX + 45, _startPosY + 65, 27, 15);
-				g.FillEllipse(fill3, _startPosX + 45, _startPosY + 65, 27, 15);
+				g.DrawEllipse(pen2, _startPosX + 70, _startPosY + 70, 40, 20);
+				g.FillEllipse(fill3, _startPosX + 70, _startPosY + 70, 40, 20);
+				g.DrawEllipse(pen2, _startPosX + 75, _startPosY + 50, 27, 15);
+				g.FillEllipse(fill3, _startPosX + 75, _startPosY + 50, 27, 15);
+				g.DrawEllipse(pen2, _startPosX + 70, _startPosY + 140, 40, 20);
+				g.FillEllipse(fill3, _startPosX + 70, _startPosY + 140, 40, 20);
+				g.DrawEllipse(pen2, _startPosX + 75, _startPosY + 165, 27, 15);
+				g.FillEllipse(fill3, _startPosX + 75, _startPosY + 165, 27, 15);
 			}
 
 			if (Wings)
 			{
-				g.FillRectangle(fill2, _startPosX, _startPosY, 190, 30); // корпус
-				g.DrawRectangle(pen, _startPosX, _startPosY, 190, 30);
+				g.FillRectangle(fill2, _startPosX + 30, _startPosY + 100, 190, 30); // корпус
+				g.DrawRectangle(pen, _startPosX + 30, _startPosY + 100, 190, 30);
 
-				PointF p1 = new PointF(_startPosX - 30, _startPosY + 15);
-				PointF p2 = new PointF(_startPosX, _startPosY + 30);
-				PointF p3 = new PointF(_startPosX, _startPosY);
+				PointF p1 = new PointF(_startPosX, _startPosY + 115);
+				PointF p2 = new PointF(_startPosX + 30, _startPosY + 130);
+				PointF p3 = new PointF(_startPosX + 30, _startPosY + 100);
 				PointF[] pol1 =
 					{
 					p1,
@@ -118,10 +121,10 @@ namespace laba_1
 				};
 				g.FillPolygon(fill, pol1);
 
-				p1 = new PointF(_startPosX + 60, _startPosY);
-				p2 = new PointF(_startPosX + 60, _startPosY - 100);
-				p3 = new PointF(_startPosX + 70, _startPosY - 100);
-				PointF p4 = new PointF(_startPosX + 90, _startPosY);
+				p1 = new PointF(_startPosX + 90, _startPosY + 100);
+				p2 = new PointF(_startPosX + 90, _startPosY);
+				p3 = new PointF(_startPosX + 100, _startPosY);
+				PointF p4 = new PointF(_startPosX + 120, _startPosY + 100);
 				PointF[] pol2 =
 				{
 					 p1,
@@ -133,10 +136,10 @@ namespace laba_1
 				g.DrawPolygon(pen, pol2);
 
 
-				p1 = new PointF(_startPosX + 60, _startPosY + 30);
-				p2 = new PointF(_startPosX + 60, _startPosY + 130);
-				p3 = new PointF(_startPosX + 70, _startPosY + 130);
-				p4 = new PointF(_startPosX + 90, _startPosY + 30);
+				p1 = new PointF(_startPosX + 90, _startPosY + 130);
+				p2 = new PointF(_startPosX + 90, _startPosY + 230);
+				p3 = new PointF(_startPosX + 100, _startPosY + 230);
+				p4 = new PointF(_startPosX + 120, _startPosY + 130);
 				PointF[] pol3 =
 				{
 					 p1,
@@ -147,10 +150,10 @@ namespace laba_1
 				g.FillPolygon(fill2, pol3);
 				g.DrawPolygon(pen, pol3);
 
-				p1 = new PointF(_startPosX + 150, _startPosY);
-				p2 = new PointF(_startPosX + 150, _startPosY - 20);
-				p3 = new PointF(_startPosX + 190, _startPosY - 55);
-				p4 = new PointF(_startPosX + 190, _startPosY);
+				p1 = new PointF(_startPosX + 180, _startPosY + 100);
+				p2 = new PointF(_startPosX + 180, _startPosY + 80);
+				p3 = new PointF(_startPosX + 220, _startPosY + 45);
+				p4 = new PointF(_startPosX + 220, _startPosY + 100);
 				PointF[] pol4 =
 				{
 					 p1,
@@ -161,10 +164,10 @@ namespace laba_1
 				g.FillPolygon(fill2, pol4);
 				g.DrawPolygon(pen, pol4);
 
-				p1 = new PointF(_startPosX + 150, _startPosY + 30);
-				p2 = new PointF(_startPosX + 150, _startPosY + 50);
-				p3 = new PointF(_startPosX + 190, _startPosY + 85);
-				p4 = new PointF(_startPosX + 190, _startPosY + 30);
+				p1 = new PointF(_startPosX + 180, _startPosY + 130);
+				p2 = new PointF(_startPosX + 180, _startPosY + 150);
+				p3 = new PointF(_startPosX + 220, _startPosY + 185);
+				p4 = new PointF(_startPosX + 220, _startPosY + 130);
 				PointF[] pol5 =
 				{
 					 p1,
@@ -178,9 +181,9 @@ namespace laba_1
 
 			if (Turbo)
 			{
-				PointF p1 = new PointF(_startPosX + 190, _startPosY);
-				PointF p2 = new PointF(_startPosX + 220, _startPosY - 8);
-				PointF p3 = new PointF(_startPosX + 190, _startPosY + 30);
+				PointF p1 = new PointF(_startPosX + 220, _startPosY + 100);
+				PointF p2 = new PointF(_startPosX + 250, _startPosY +92);
+				PointF p3 = new PointF(_startPosX + 220, _startPosY + 130);
 				PointF[] pol6 =
 				{
 					 p1,
@@ -190,9 +193,9 @@ namespace laba_1
 				g.DrawPolygon(pen2, pol6);
 				g.FillPolygon(fill5, pol6);
 
-				p1 = new PointF(_startPosX + 190, _startPosY + 30);
-				p2 = new PointF(_startPosX + 220, _startPosY + 38);
-				p3 = new PointF(_startPosX + 190, _startPosY);
+				p1 = new PointF(_startPosX + 220, _startPosY + 130);
+				p2 = new PointF(_startPosX + 250, _startPosY + 138);
+				p3 = new PointF(_startPosX + 220, _startPosY + 100);
 				PointF[] pol7 =
 				{
 					 p1,
@@ -202,9 +205,9 @@ namespace laba_1
 				g.DrawPolygon(pen2, pol7);
 				g.FillPolygon(fill5, pol7);
 
-				p1 = new PointF(_startPosX + 190, _startPosY);
-				p2 = new PointF(_startPosX + 240, _startPosY + 15);
-				p3 = new PointF(_startPosX + 190, _startPosY + 30);
+				p1 = new PointF(_startPosX + 220, _startPosY + 100);
+				p2 = new PointF(_startPosX + 270, _startPosY + 115);
+				p3 = new PointF(_startPosX + 220, _startPosY + 130);
 				PointF[] pol8 =
 				{
 					 p1,
