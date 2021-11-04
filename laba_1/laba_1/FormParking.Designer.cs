@@ -33,13 +33,16 @@ namespace laba_1
             this.buttonSetPlane = new System.Windows.Forms.Button();
             this.buttonSetStorm = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
             this.buttonTakePlane = new System.Windows.Forms.Button();
+            this.listBoxParkings = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxNameParking = new System.Windows.Forms.TextBox();
+            this.buttonAddParking = new System.Windows.Forms.Button();
+            this.buttonDelParking = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxParking
@@ -53,7 +56,7 @@ namespace laba_1
             // 
             // buttonSetPlane
             // 
-            this.buttonSetPlane.Location = new System.Drawing.Point(1225, 25);
+            this.buttonSetPlane.Location = new System.Drawing.Point(1237, 224);
             this.buttonSetPlane.Name = "buttonSetPlane";
             this.buttonSetPlane.Size = new System.Drawing.Size(127, 82);
             this.buttonSetPlane.TabIndex = 1;
@@ -63,7 +66,7 @@ namespace laba_1
             // 
             // buttonSetStorm
             // 
-            this.buttonSetStorm.Location = new System.Drawing.Point(1225, 113);
+            this.buttonSetStorm.Location = new System.Drawing.Point(1237, 312);
             this.buttonSetStorm.Name = "buttonSetStorm";
             this.buttonSetStorm.Size = new System.Drawing.Size(127, 57);
             this.buttonSetStorm.TabIndex = 2;
@@ -73,24 +76,15 @@ namespace laba_1
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.pictureBox2);
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Controls.Add(this.buttonTakePlane);
-            this.groupBox.Location = new System.Drawing.Point(1212, 185);
+            this.groupBox.Location = new System.Drawing.Point(1224, 384);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(146, 221);
+            this.groupBox.Size = new System.Drawing.Size(146, 109);
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Забрать машину";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(6, 94);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(121, 83);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // maskedTextBox
             // 
@@ -119,11 +113,61 @@ namespace laba_1
             this.buttonTakePlane.UseVisualStyleBackColor = true;
             this.buttonTakePlane.Click += new System.EventHandler(this.buttonTakePlane_Click);
             // 
+            // listBoxParkings
+            // 
+            this.listBoxParkings.FormattingEnabled = true;
+            this.listBoxParkings.ItemHeight = 16;
+            this.listBoxParkings.Location = new System.Drawing.Point(1231, 91);
+            this.listBoxParkings.Name = "listBoxParkings";
+            this.listBoxParkings.Size = new System.Drawing.Size(120, 84);
+            this.listBoxParkings.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1257, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Парковки:";
+            // 
+            // textBoxNameParking
+            // 
+            this.textBoxNameParking.Location = new System.Drawing.Point(1245, 29);
+            this.textBoxNameParking.Name = "textBoxNameParking";
+            this.textBoxNameParking.Size = new System.Drawing.Size(100, 22);
+            this.textBoxNameParking.TabIndex = 6;
+            // 
+            // buttonAddParking
+            // 
+            this.buttonAddParking.Location = new System.Drawing.Point(1214, 57);
+            this.buttonAddParking.Name = "buttonAddParking";
+            this.buttonAddParking.Size = new System.Drawing.Size(156, 28);
+            this.buttonAddParking.TabIndex = 7;
+            this.buttonAddParking.Text = "Добавить парковку";
+            this.buttonAddParking.UseVisualStyleBackColor = true;
+            this.buttonAddParking.Click += new System.EventHandler(this.buttonAddParking_Click);
+            // 
+            // buttonDelParking
+            // 
+            this.buttonDelParking.Location = new System.Drawing.Point(1212, 181);
+            this.buttonDelParking.Name = "buttonDelParking";
+            this.buttonDelParking.Size = new System.Drawing.Size(164, 33);
+            this.buttonDelParking.TabIndex = 8;
+            this.buttonDelParking.Text = "Удалить парковку";
+            this.buttonDelParking.UseVisualStyleBackColor = true;
+            this.buttonDelParking.Click += new System.EventHandler(this.buttonDelParking_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 617);
+            this.Controls.Add(this.buttonDelParking);
+            this.Controls.Add(this.buttonAddParking);
+            this.Controls.Add(this.textBoxNameParking);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBoxParkings);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonSetStorm);
             this.Controls.Add(this.buttonSetPlane);
@@ -133,8 +177,8 @@ namespace laba_1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,9 +188,13 @@ namespace laba_1
         private System.Windows.Forms.Button buttonSetPlane;
         private System.Windows.Forms.Button buttonSetStorm;
         private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button buttonTakePlane;
+        private System.Windows.Forms.ListBox listBoxParkings;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxNameParking;
+        private System.Windows.Forms.Button buttonAddParking;
+        private System.Windows.Forms.Button buttonDelParking;
     }
 }
