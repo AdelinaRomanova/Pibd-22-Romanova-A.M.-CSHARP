@@ -36,6 +36,7 @@ namespace laba_1
             {
                 listBoxParkings.SelectedIndex = index;
             }
+
         } // Заполнение listBoxLevels
 
 

@@ -121,6 +121,7 @@ namespace laba_1
             this.listBoxParkings.Name = "listBoxParkings";
             this.listBoxParkings.Size = new System.Drawing.Size(120, 84);
             this.listBoxParkings.TabIndex = 4;
+            this.listBoxParkings.SelectedIndexChanged += new System.EventHandler(this.listBoxParkings_SelectedIndexChanged);
             // 
             // label1
             // 

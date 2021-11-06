@@ -31,18 +31,18 @@ namespace laba_1
             if (p._places.Count >= p._maxCount)
                 return -1;
             p._places.Add(plane);
-            return p._places.Count;
+            return 1;
         } //перегрузка оператора сложения
 
         public static T operator -(Parking<T> p, int index)
         {
-            if (index < 0 && index > p._places.Count)
+            if (index < 0 || index > p._places.Count)
             {
                 return null;
             }
-            T plane = p._places[index];
+            T obj = p._places[index];
             p._places.RemoveAt(index);
-            return plane;
+            return obj;
 
         }//перегрузка оператора вычитания
 

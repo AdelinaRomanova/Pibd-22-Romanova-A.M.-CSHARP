@@ -47,5 +47,20 @@ namespace laba_1
             }
         } // Доступ к парковке
 
+        public Parking<Vehicle> this[int ind]
+        {
+            get
+            {
+                if (ind > -1 && ind < Keys.Count)
+                {
+                    return parkingStages[Keys[ind]];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }
