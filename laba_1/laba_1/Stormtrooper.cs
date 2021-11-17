@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
 	public class Stormtrooper : Warplane
 	{ 
-		public Color DopColor { private set; get; } /// Дополнительный цвет
+		public Color DopColor { private set; get; } 
 		public bool Wings { private set; get; }/// Признак наличия крыльев
 		public bool Gun { private set; get; }  /// Признак наличия пушек
 		public bool Turbo { private set; get; }/// Признак наличия ускорения
 
-		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool wings, bool gun, bool turbo) : base(maxSpeed, weight, mainColor, 230, 220)
+		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool wings, bool gun, bool turbo) 
+			: base(maxSpeed, weight, mainColor, 230, 220)
 		{
 			DopColor = dopColor;
 			Wings = wings;

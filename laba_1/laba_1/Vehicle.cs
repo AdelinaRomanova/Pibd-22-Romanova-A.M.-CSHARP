@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
     public abstract class Vehicle : ITransport
     {
-		protected float _startPosX; /// Левая координата отрисовки штурмовика
-		protected float _startPosY;/// Правая кооридната отрисовки штурмовика
-		protected int _pictureWidth;/// Ширина окна отрисовки
-		protected int _pictureHeight;/// Высота окна отрисовки
+		protected float _startPosX;
+		protected float _startPosY;
+		protected int _pictureWidth;
+		protected int _pictureHeight;
 
-		public int MaxSpeed { protected set; get; }/// Максимальная скорость
-		public float Weight { protected set; get; }/// Вес штурмовика
-		public Color MainColor { protected set; get; } /// Основной цвет штурмовика
+		public int MaxSpeed { protected set; get; }
+		public float Weight { protected set; get; }
+		public Color MainColor { protected set; get; } 
 		public void SetPosition(int x, int y, int width, int height) {
 			_startPosX = x;
 			_startPosY = y;
@@ -25,7 +25,5 @@ namespace laba_1
 		}
 		abstract public void MoveTransport(Direction direction);
 		abstract public void DrawTransport(Graphics g);
-
-
 	}
 }
