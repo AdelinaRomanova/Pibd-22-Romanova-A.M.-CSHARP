@@ -1,5 +1,5 @@
 ﻿
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
     partial class FormPlane
     {

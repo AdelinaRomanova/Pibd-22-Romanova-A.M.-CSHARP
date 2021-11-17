@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
     public partial class FormPlane : Form
     {

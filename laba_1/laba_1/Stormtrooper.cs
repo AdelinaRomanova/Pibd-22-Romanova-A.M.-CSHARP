@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
 	class Stormtrooper
 	{
-		private float _startPosX; /// Левая координата отрисовки штурмовика
-		private float _startPosY;/// Правая кооридната отрисовки штурмовика
-		private int _pictureWidth;/// Ширина окна отрисовки
-		private int _pictureHeight;/// Высота окна отрисовки
-		private readonly int planeWidth = 250;/// Ширина отрисовки штурмовика
-		private readonly int planeHeight = 230;/// Высота отрисовки штурмовика
-		public int MaxSpeed { private set; get; }/// Максимальная скорость
-		public float Weight { private set; get; }/// Вес штурмовика
-		public Color MainColor { private set; get; } /// Основной цвет штурмовика
-		public Color DopColor { private set; get; } /// Дополнительный цвет
+		private float _startPosX; 
+		private float _startPosY;
+		private int _pictureWidth;
+		private int _pictureHeight;
+		private readonly int planeWidth = 250;
+		private readonly int planeHeight = 230;
+		public int MaxSpeed { private set; get; }
+		public float Weight { private set; get; }
+		public Color MainColor { private set; get; } 
+		public Color DopColor { private set; get; } 
 		public bool Wings { private set; get; }/// Признак наличия крыльев
 		public bool Gun { private set; get; }  /// Признак наличия пушек
 		public bool Turbo { private set; get; }/// Признак наличия ускорения
@@ -89,9 +89,6 @@ namespace laba_1
 			Brush fill3 = new SolidBrush(Color.FromArgb(109, 54, 54));
 			Brush fill4 = new SolidBrush(Color.FromArgb(239, 52, 62));
 			Brush fill5 = new SolidBrush(Color.FromArgb(240, 96, 0));
-			int p = 30;
-			int t = 100;
-
 
 			if (Gun)
 			{ //пушки
