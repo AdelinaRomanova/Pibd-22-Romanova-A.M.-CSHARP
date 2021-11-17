@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
     static class Program
     {
@@ -13,7 +13,7 @@ namespace laba_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormParking());
+            Application.Run(new FormHangar());
         }
     }
 }

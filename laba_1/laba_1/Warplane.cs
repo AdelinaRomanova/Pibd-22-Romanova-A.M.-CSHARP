@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
 	public class Warplane : Vehicle
 	{

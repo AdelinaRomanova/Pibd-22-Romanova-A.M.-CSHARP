@@ -7,18 +7,18 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
-    public class Parking<T> where T: class,ITransport
+    public class Hangar<T> where T: class,ITransport
     {
         private readonly List<T> _places; // список объектов, которые храним
-        private readonly int _maxCount; // максимальное количество мест на парковке
-        private readonly int pictureWidht; //ширина отрисовки окна
-        private readonly int pictureHeight; //высота отрисовки окна
-        private readonly int _placeSizeWidht = 280; //ширина парковочного места
-        private readonly int _placeSizeHeight = 240; //высота парковочного места
+        private readonly int _maxCount; 
+        private readonly int pictureWidht; 
+        private readonly int pictureHeight; 
+        private readonly int _placeSizeWidht = 280; 
+        private readonly int _placeSizeHeight = 240; 
 
-        public Parking(int picWidht, int picHeight) {
+        public Hangar(int picWidht, int picHeight) {
             int widht = picWidht / _placeSizeWidht;
             int height = picHeight / _placeSizeHeight;
             _maxCount = widht * height;
@@ -27,14 +27,14 @@ namespace laba_1
             _places = new List<T>();
         } //конструктор
 
-        public static int operator +(Parking<T> p, T plane) {
+        public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
                 return -1;
             p._places.Add(plane);
             return 1;
         } //перегрузка оператора сложения
 
-        public static T operator -(Parking<T> p, int index)
+        public static T operator -(Hangar<T> p, int index)
         {
             if (index < 0 || index > p._places.Count)
             {
