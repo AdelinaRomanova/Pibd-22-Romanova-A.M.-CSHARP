@@ -55,7 +55,7 @@ namespace WindowsFormsStormtrooper
         {
             if (string.IsNullOrEmpty(textBoxNameHangar.Text))
             {
-                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите название ангара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             hangarCollection.AddParking(textBoxNameHangar.Text);
@@ -67,7 +67,7 @@ namespace WindowsFormsStormtrooper
         {
             if (listBoxHangars.SelectedIndex > -1)
             {
-                if (MessageBox.Show($"Удалить парковку { listBoxHangars.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Удалить ангар { listBoxHangars.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     hangarCollection.DelParking(textBoxNameHangar.Text);
                     ReloadLevels();
@@ -90,7 +90,7 @@ namespace WindowsFormsStormtrooper
                     }
                     else
                     {
-                        MessageBox.Show("Парковка переполнена");
+                        MessageBox.Show("Ангар переполнен");
                     }
                 }
             }
@@ -113,7 +113,7 @@ namespace WindowsFormsStormtrooper
                         }
                         else
                         {
-                            MessageBox.Show("Парковка переполнена");
+                            MessageBox.Show("Ангар переполнен");
 
                         }
                     }
