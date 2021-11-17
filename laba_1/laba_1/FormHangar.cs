@@ -13,7 +13,7 @@ namespace WindowsFormsStormtrooper
 {
     public partial class FormHangar : Form
     {
-        private readonly Hangar<Warplane> hangar; //объект от класса парковки
+        private readonly Hangar<Warplane> hangar; //объект от класса ангара
 
         public FormHangar()
         {
@@ -28,7 +28,7 @@ namespace WindowsFormsStormtrooper
             Graphics gr = Graphics.FromImage(bmp);
             hangar.Draw(gr);
             pictureBoxHangar.Image = bmp;
-        } //метод отрисовки парковки
+        } //метод отрисовки ангара
 
         private void buttonSetPlane_Click(object sender, EventArgs e)
         {
