@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace laba_1.Properties
+namespace WindowsFormsStormtrooper.Properties
 {
     /// <summary>
     ///   Класс ресурсов со строгим типом для поиска локализованных строк и пр.

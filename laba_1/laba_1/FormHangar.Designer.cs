@@ -1,7 +1,7 @@
 ﻿
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
-    partial class FormParking
+    partial class FormHangar
     {
         /// <summary>
         /// Required designer variable.
@@ -29,27 +29,25 @@ namespace laba_1
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
+            this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
             this.buttonSetPlane = new System.Windows.Forms.Button();
             this.buttonSetStorm = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
             this.buttonTakePlane = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxParking
+            // pictureBoxHangar
             // 
-            this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(1206, 617);
-            this.pictureBoxParking.TabIndex = 0;
-            this.pictureBoxParking.TabStop = false;
+            this.pictureBoxHangar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxHangar.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxHangar.Name = "pictureBoxHangar";
+            this.pictureBoxHangar.Size = new System.Drawing.Size(1194, 617);
+            this.pictureBoxHangar.TabIndex = 0;
+            this.pictureBoxHangar.TabStop = false;
             // 
             // buttonSetPlane
             // 
@@ -73,28 +71,19 @@ namespace laba_1
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.pictureBox2);
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Controls.Add(this.buttonTakePlane);
-            this.groupBox.Location = new System.Drawing.Point(1212, 185);
+            this.groupBox.Location = new System.Drawing.Point(1200, 185);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(146, 221);
+            this.groupBox.Size = new System.Drawing.Size(170, 120);
             this.groupBox.TabIndex = 3;
             this.groupBox.TabStop = false;
-            this.groupBox.Text = "Забрать машину";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(6, 94);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(121, 83);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.groupBox.Text = "Забрать штурмовик";
             // 
             // maskedTextBox
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(69, 25);
+            this.maskedTextBox.Location = new System.Drawing.Point(88, 28);
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(52, 22);
             this.maskedTextBox.TabIndex = 1;
@@ -103,7 +92,7 @@ namespace laba_1
             // 
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.label.Location = new System.Drawing.Point(10, 28);
+            this.label.Location = new System.Drawing.Point(19, 33);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(53, 17);
             this.label.TabIndex = 0;
@@ -111,7 +100,7 @@ namespace laba_1
             // 
             // buttonTakePlane
             // 
-            this.buttonTakePlane.Location = new System.Drawing.Point(28, 59);
+            this.buttonTakePlane.Location = new System.Drawing.Point(41, 67);
             this.buttonTakePlane.Name = "buttonTakePlane";
             this.buttonTakePlane.Size = new System.Drawing.Size(80, 29);
             this.buttonTakePlane.TabIndex = 2;
@@ -119,7 +108,7 @@ namespace laba_1
             this.buttonTakePlane.UseVisualStyleBackColor = true;
             this.buttonTakePlane.Click += new System.EventHandler(this.buttonTakePlane_Click);
             // 
-            // FormParking
+            // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,24 +116,22 @@ namespace laba_1
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.buttonSetStorm);
             this.Controls.Add(this.buttonSetPlane);
-            this.Controls.Add(this.pictureBoxParking);
-            this.Name = "FormParking";
+            this.Controls.Add(this.pictureBoxHangar);
+            this.Name = "FormHangar";
             this.Text = "Парковка";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxParking;
+        private System.Windows.Forms.PictureBox pictureBoxHangar;
         private System.Windows.Forms.Button buttonSetPlane;
         private System.Windows.Forms.Button buttonSetStorm;
         private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button buttonTakePlane;

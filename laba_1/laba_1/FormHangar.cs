@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace laba_1
+namespace WindowsFormsStormtrooper
 {
-    public partial class FormParking : Form
+    public partial class FormHangar : Form
     {
-        private readonly Parking<Warplane> parking; //объект от класса парковки
+        private readonly Hangar<Warplane> hangar; //объект от класса парковки
 
-        public FormParking()
+        public FormHangar()
         {
             InitializeComponent();
-            parking = new Parking<Warplane>(pictureBoxParking.Width, pictureBoxParking.Height);
+            hangar = new Hangar<Warplane>(pictureBoxHangar.Width, pictureBoxHangar.Height);
             Draw();
         }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+            Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
+            hangar.Draw(gr);
+            pictureBoxHangar.Image = bmp;
         } //метод отрисовки парковки
 
         private void buttonSetPlane_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace laba_1
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var plane = new Warplane(100, 1000, dialog.Color);
-                int place = parking + plane;
+                int place = hangar + plane;
                 Draw();
             } //обработка нажатия кнопки "Приземлить военный самолёт"
         }
@@ -50,7 +50,7 @@ namespace laba_1
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var plane = new Stormtrooper(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                    int place = parking + plane;
+                    int place = hangar + plane;
                     Draw();
                 }
             }
@@ -60,7 +60,7 @@ namespace laba_1
         {
             if (maskedTextBox.Text != "")
             {
-                var plane = parking - Convert.ToInt32(maskedTextBox.Text);
+                var plane = hangar - Convert.ToInt32(maskedTextBox.Text);
                 if (plane != null)
                 {
                     FormPlane form = new FormPlane();
