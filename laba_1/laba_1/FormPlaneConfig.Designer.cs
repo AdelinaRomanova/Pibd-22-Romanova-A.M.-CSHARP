@@ -175,9 +175,9 @@ namespace WindowsFormsStormtrooper
             // pictureBoxPlane
             // 
             this.pictureBoxPlane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPlane.Location = new System.Drawing.Point(58, 14);
+            this.pictureBoxPlane.Location = new System.Drawing.Point(56, 20);
             this.pictureBoxPlane.Name = "pictureBoxPlane";
-            this.pictureBoxPlane.Size = new System.Drawing.Size(373, 289);
+            this.pictureBoxPlane.Size = new System.Drawing.Size(373, 297);
             this.pictureBoxPlane.TabIndex = 7;
             this.pictureBoxPlane.TabStop = false;
             // 
@@ -194,6 +194,7 @@ namespace WindowsFormsStormtrooper
             // 
             // labelWarplane
             // 
+            this.labelWarplane.AllowDrop = true;
             this.labelWarplane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelWarplane.Location = new System.Drawing.Point(9, 38);
             this.labelWarplane.Name = "labelWarplane";
@@ -205,6 +206,7 @@ namespace WindowsFormsStormtrooper
             // 
             // labelStormtrooper
             // 
+            this.labelStormtrooper.AllowDrop = true;
             this.labelStormtrooper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelStormtrooper.Location = new System.Drawing.Point(9, 102);
             this.labelStormtrooper.Name = "labelStormtrooper";
@@ -219,9 +221,9 @@ namespace WindowsFormsStormtrooper
             this.panelPlane.AllowDrop = true;
             this.panelPlane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPlane.Controls.Add(this.pictureBoxPlane);
-            this.panelPlane.Location = new System.Drawing.Point(385, 39);
+            this.panelPlane.Location = new System.Drawing.Point(385, 27);
             this.panelPlane.Name = "panelPlane";
-            this.panelPlane.Size = new System.Drawing.Size(483, 325);
+            this.panelPlane.Size = new System.Drawing.Size(483, 337);
             this.panelPlane.TabIndex = 2;
             this.panelPlane.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelPlane_DragDrop);
             this.panelPlane.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelPlane_DragEnter);

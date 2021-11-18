@@ -40,7 +40,6 @@ namespace WindowsFormsStormtrooper
                 pictureBoxPlane.Image = bmp;
             }
         }
-
         public void AddEvent(Action<Vehicle> ev)
         {
             if (eventAddPlane == null)
