@@ -10,22 +10,20 @@ namespace WindowsFormsStormtrooper
 	public class Stormtrooper : Warplane
 	{ 
 		public Color DopColor { private set; get; } 
-		public bool Wings { private set; get; }/// Признак наличия крыльев
 		public bool Gun { private set; get; }  /// Признак наличия пушек
 		public bool Turbo { private set; get; }/// Признак наличия ускорения
 
-		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool wings, bool gun, bool turbo) 
+		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool gun, bool turbo) 
 			: base(maxSpeed, weight, mainColor, 100, 60)
 		{
 			DopColor = dopColor;
-			Wings = wings;
 			Gun = gun;
 			Turbo = turbo;
 		}
 		public override void DrawTransport(Graphics g)
 		{
 			base.DrawTransport(g);
-			Pen pen2 = new Pen(DopColor);
+			Pen pen2 = new Pen(Color.Black);
 			pen2.Width = 2.0f;
 			Brush fill3 = new SolidBrush(DopColor);
 			Brush fill4 = new SolidBrush(Color.FromArgb(239, 52, 62));
@@ -81,7 +79,7 @@ namespace WindowsFormsStormtrooper
 					 p3,
 				};
 				g.DrawPolygon(pen2, pol8);
-				g.FillPolygon(fill4, pol8);
+				g.FillPolygon(fill3, pol8);
 			}
 		}
 

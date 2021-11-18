@@ -35,7 +35,6 @@ namespace WindowsFormsStormtrooper
             this.numericUpDownMaxSpeed = new System.Windows.Forms.NumericUpDown();
             this.checkBoxGuns = new System.Windows.Forms.CheckBox();
             this.labelWeightPlane = new System.Windows.Forms.Label();
-            this.checkBoxWings = new System.Windows.Forms.CheckBox();
             this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxPlane = new System.Windows.Forms.PictureBox();
             this.groupBoxTypePlane = new System.Windows.Forms.GroupBox();
@@ -71,7 +70,6 @@ namespace WindowsFormsStormtrooper
             this.groupBoxParamsPlane.Controls.Add(this.numericUpDownMaxSpeed);
             this.groupBoxParamsPlane.Controls.Add(this.checkBoxGuns);
             this.groupBoxParamsPlane.Controls.Add(this.labelWeightPlane);
-            this.groupBoxParamsPlane.Controls.Add(this.checkBoxWings);
             this.groupBoxParamsPlane.Controls.Add(this.numericUpDownWeight);
             this.groupBoxParamsPlane.Location = new System.Drawing.Point(12, 198);
             this.groupBoxParamsPlane.Name = "groupBoxParamsPlane";
@@ -83,7 +81,7 @@ namespace WindowsFormsStormtrooper
             // checkBoxTurbo
             // 
             this.checkBoxTurbo.AutoSize = true;
-            this.checkBoxTurbo.Location = new System.Drawing.Point(165, 116);
+            this.checkBoxTurbo.Location = new System.Drawing.Point(165, 101);
             this.checkBoxTurbo.Name = "checkBoxTurbo";
             this.checkBoxTurbo.Size = new System.Drawing.Size(161, 21);
             this.checkBoxTurbo.TabIndex = 2;
@@ -124,7 +122,7 @@ namespace WindowsFormsStormtrooper
             // checkBoxGuns
             // 
             this.checkBoxGuns.AutoSize = true;
-            this.checkBoxGuns.Location = new System.Drawing.Point(165, 83);
+            this.checkBoxGuns.Location = new System.Drawing.Point(165, 63);
             this.checkBoxGuns.Name = "checkBoxGuns";
             this.checkBoxGuns.Size = new System.Drawing.Size(133, 21);
             this.checkBoxGuns.TabIndex = 6;
@@ -139,16 +137,6 @@ namespace WindowsFormsStormtrooper
             this.labelWeightPlane.Size = new System.Drawing.Size(120, 17);
             this.labelWeightPlane.TabIndex = 2;
             this.labelWeightPlane.Text = "Вес штурмовика:";
-            // 
-            // checkBoxWings
-            // 
-            this.checkBoxWings.AutoSize = true;
-            this.checkBoxWings.Location = new System.Drawing.Point(165, 50);
-            this.checkBoxWings.Name = "checkBoxWings";
-            this.checkBoxWings.Size = new System.Drawing.Size(147, 21);
-            this.checkBoxWings.TabIndex = 5;
-            this.checkBoxWings.Text = "Наличие крыльев";
-            this.checkBoxWings.UseVisualStyleBackColor = true;
             // 
             // numericUpDownWeight
             // 
@@ -388,7 +376,6 @@ namespace WindowsFormsStormtrooper
         private System.Windows.Forms.NumericUpDown numericUpDownMaxSpeed;
         private System.Windows.Forms.CheckBox checkBoxGuns;
         private System.Windows.Forms.Label labelWeightPlane;
-        private System.Windows.Forms.CheckBox checkBoxWings;
         private System.Windows.Forms.NumericUpDown numericUpDownWeight;
         private System.Windows.Forms.PictureBox pictureBoxPlane;
         private System.Windows.Forms.CheckBox checkBoxTurbo;

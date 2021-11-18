@@ -41,7 +41,7 @@ namespace WindowsFormsStormtrooper
 		private void buttonCreateStormtrooper_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
-			plane = new Stormtrooper(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
+			plane = new Stormtrooper(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true);
 			plane.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxPlane.Width,pictureBoxPlane.Height);
 			Draw();
 		} //Обработка нажатия кнопки "Создать штурмовик"

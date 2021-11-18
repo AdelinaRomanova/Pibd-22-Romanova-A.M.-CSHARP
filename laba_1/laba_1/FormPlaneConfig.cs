@@ -78,8 +78,7 @@ namespace WindowsFormsStormtrooper
                     plane = new Warplane((int)numericUpDownMaxSpeed.Value, (int)numericUpDownWeight.Value, Color.Pink);
                     break;
                 case "Штурмовик":
-                    plane = new Stormtrooper((int)numericUpDownMaxSpeed.Value, (int)numericUpDownWeight.Value, Color.Pink, Color.Purple,
-                        checkBoxWings.Checked, checkBoxGuns.Checked, checkBoxTurbo.Checked);
+                    plane = new Stormtrooper((int)numericUpDownMaxSpeed.Value, (int)numericUpDownWeight.Value, Color.Pink, Color.Purple,checkBoxGuns.Checked, checkBoxTurbo.Checked);
                     break;
             }
             DrawPlane();

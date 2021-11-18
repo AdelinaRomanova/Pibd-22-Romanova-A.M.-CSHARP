@@ -62,7 +62,7 @@ namespace WindowsFormsStormtrooper
 		}
 		public override void DrawTransport(Graphics g)
 		{
-			Pen pen = new Pen(MainColor);
+			Pen pen = new Pen(Color.Black);
 			pen.Width = 1.0f;
 			Brush fill = new SolidBrush(Color.FromArgb(0, 0, 0));
 			Brush fill2 = new SolidBrush(MainColor) ;
