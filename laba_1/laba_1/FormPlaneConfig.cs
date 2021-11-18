@@ -115,7 +115,8 @@ namespace WindowsFormsStormtrooper
                 DrawPlane();
             }
         }
-        private void buttonOk_Click(object sender, EventArgs e)
+
+        private void buttonAddPlane_Click(object sender, EventArgs e)
         {
             eventAddPlane?.Invoke(plane);
             Close();

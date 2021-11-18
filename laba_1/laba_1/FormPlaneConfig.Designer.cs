@@ -54,7 +54,7 @@ namespace WindowsFormsStormtrooper
             this.panelColorBlack = new System.Windows.Forms.Panel();
             this.groupBoxColor = new System.Windows.Forms.GroupBox();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOk = new System.Windows.Forms.Button();
+            this.buttonAddPlane = new System.Windows.Forms.Button();
             this.groupBoxParamsPlane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
@@ -322,7 +322,7 @@ namespace WindowsFormsStormtrooper
             // 
             this.groupBoxColor.Controls.Add(this.buttonCancel);
             this.groupBoxColor.Controls.Add(this.labelDopColor);
-            this.groupBoxColor.Controls.Add(this.buttonOk);
+            this.groupBoxColor.Controls.Add(this.buttonAddPlane);
             this.groupBoxColor.Controls.Add(this.labelMainColor);
             this.groupBoxColor.Controls.Add(this.panelColorPink);
             this.groupBoxColor.Controls.Add(this.panelColorGold);
@@ -348,14 +348,15 @@ namespace WindowsFormsStormtrooper
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // buttonOk
+            // buttonAddPlane
             // 
-            this.buttonOk.Location = new System.Drawing.Point(55, 249);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(94, 40);
-            this.buttonOk.TabIndex = 10;
-            this.buttonOk.Text = "Добавить";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonAddPlane.Location = new System.Drawing.Point(55, 249);
+            this.buttonAddPlane.Name = "buttonAddPlane";
+            this.buttonAddPlane.Size = new System.Drawing.Size(94, 40);
+            this.buttonAddPlane.TabIndex = 10;
+            this.buttonAddPlane.Text = "Добавить";
+            this.buttonAddPlane.UseVisualStyleBackColor = true;
+            this.buttonAddPlane.Click += new System.EventHandler(this.buttonAddPlane_Click);
             // 
             // FormPlaneConfig
             // 
@@ -406,7 +407,7 @@ namespace WindowsFormsStormtrooper
         private System.Windows.Forms.GroupBox groupBoxColor;
         private System.Windows.Forms.Label labelDopColor;
         private System.Windows.Forms.Label labelMainColor;
-        private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.Button buttonAddPlane;
         private System.Windows.Forms.Button buttonCancel;
     }
 }
