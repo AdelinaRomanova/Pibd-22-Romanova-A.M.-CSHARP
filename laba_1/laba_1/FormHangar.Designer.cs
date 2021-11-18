@@ -40,16 +40,23 @@ namespace WindowsFormsStormtrooper
             this.buttonAddHangar = new System.Windows.Forms.Button();
             this.buttonDelHangar = new System.Windows.Forms.Button();
             this.buttonCreatePlane = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxHangar
             // 
             this.pictureBoxHangar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxHangar.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxHangar.Location = new System.Drawing.Point(0, 28);
             this.pictureBoxHangar.Name = "pictureBoxHangar";
-            this.pictureBoxHangar.Size = new System.Drawing.Size(1206, 617);
+            this.pictureBoxHangar.Size = new System.Drawing.Size(1206, 589);
             this.pictureBoxHangar.TabIndex = 0;
             this.pictureBoxHangar.TabStop = false;
             // 
@@ -148,6 +155,50 @@ namespace WindowsFormsStormtrooper
             this.buttonCreatePlane.UseVisualStyleBackColor = true;
             this.buttonCreatePlane.Click += new System.EventHandler(this.buttonCreatePlane_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1382, 28);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.openToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Text = "Сохранить";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click_1);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Text = "Загрузить";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -161,11 +212,15 @@ namespace WindowsFormsStormtrooper
             this.Controls.Add(this.listBoxHangars);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.pictureBoxHangar);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHangar";
             this.Text = "Парковка";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +239,11 @@ namespace WindowsFormsStormtrooper
         private System.Windows.Forms.Button buttonAddHangar;
         private System.Windows.Forms.Button buttonDelHangar;
         private System.Windows.Forms.Button buttonCreatePlane;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

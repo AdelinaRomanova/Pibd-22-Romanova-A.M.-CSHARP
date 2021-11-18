@@ -11,11 +11,23 @@ namespace WindowsFormsStormtrooper
 	{
 		protected readonly int planeWidth = 250;
 		protected readonly int planeHeight = 230;
+		protected readonly char separator = ';';
 		public Warplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
 			MainColor = mainColor;
+		}
+
+		public Warplane(string info) {
+			string[] strs = info.Split(separator);
+			if (strs.Length == 3)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+			}
+
 		}
 		protected Warplane(int maxSpeed, float weight, Color mainColor, int planeWidth, int planeHeight)
 		{
@@ -138,7 +150,12 @@ namespace WindowsFormsStormtrooper
 			g.FillPolygon(fill2, pol5);
 			g.DrawPolygon(pen, pol5);
 		}
-	}
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
+        }
+    }
 }
         
 

@@ -26,14 +26,12 @@ namespace WindowsFormsStormtrooper
             pictureHeight = picHeight;
             _places = new List<T>();
         } //конструктор
-
         public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
                 return -1;
             p._places.Add(plane);
-            return 1;
+                return 1;
         } //перегрузка оператора сложения
-
         public static T operator -(Hangar<T> p, int index)
         {
             if (index < 0 || index > p._places.Count)
@@ -45,15 +43,13 @@ namespace WindowsFormsStormtrooper
             return obj;
 
         }//перегрузка оператора вычитания
-
         public void Draw(Graphics g) {
             DrawMarking(g);
             for (int i = 0; i < _places.Count; i++) {
-                _places[i].SetPosition(4 + i % 3 * _placeSizeWidht, i / 3 * _placeSizeHeight + 4, pictureWidht, pictureHeight);
-                _places[i].DrawTransport(g);
+                _places[i]?.SetPosition(4 + i % 3 * _placeSizeWidht, i / 3 * _placeSizeHeight + 4, pictureWidht, pictureHeight);
+                _places[i]?.DrawTransport(g);
             }
         } //метод отрисовки парковки
-
         private void DrawMarking(Graphics g) {
             Pen pen = new Pen(Color.Black, 3);
             for (int i = 0; i < pictureWidht / _placeSizeWidht; i++) {
@@ -63,7 +59,14 @@ namespace WindowsFormsStormtrooper
                 }//линия разметки места
                 g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
-        }
-
-    }
+        } // Метод отрисовки разметки парковочных мест
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
+        } // Функция получения элементы из списка
+    } 
 }

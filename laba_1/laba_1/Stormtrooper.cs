@@ -20,6 +20,20 @@ namespace WindowsFormsStormtrooper
 			Gun = gun;
 			Turbo = turbo;
 		}
+
+		public Stormtrooper(string info): base(info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 6)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+				DopColor = Color.FromName(strs[3]);
+				Gun = Convert.ToBoolean(strs[4]);
+				Turbo = Convert.ToBoolean(strs[5]);
+			}
+		}
 		public override void DrawTransport(Graphics g)
 		{
 			base.DrawTransport(g);
@@ -86,6 +100,11 @@ namespace WindowsFormsStormtrooper
 		public void SetDopColor(Color color) {
 			DopColor = color;
 		} // Смена дополнительного цвета
+
+		public override string ToString()
+		{
+		return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Gun}{separator}{Turbo}";
+		}
 	}
 }
 
