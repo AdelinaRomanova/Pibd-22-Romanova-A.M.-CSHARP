@@ -38,8 +38,6 @@ namespace WindowsFormsStormtrooper
             }
 
         } // Заполнение listBoxLevels
-
-
         private void Draw()
         {
             if (listBoxHangars.SelectedIndex > -1)
@@ -50,7 +48,6 @@ namespace WindowsFormsStormtrooper
                 pictureBoxHangar.Image = bmp;
             }
         } //метод отрисовки парковки
-
         private void buttonAddParking_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxNameHangar.Text))
@@ -62,7 +59,6 @@ namespace WindowsFormsStormtrooper
             ReloadLevels();
             Draw();
         } // Обработка нажатия кнопки "Добавить ангар"
-
         private void buttonDelParking_Click(object sender, EventArgs e)
         {
             if (listBoxHangars.SelectedIndex > -1)
@@ -75,52 +71,6 @@ namespace WindowsFormsStormtrooper
             }
 
         } // Обработка нажатия кнопки "Удалить ангар"
-
-        private void buttonSetPlane_Click(object sender, EventArgs e)
-        {
-            if (listBoxHangars.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var plane = new Warplane(100, 1000, dialog.Color);
-                    if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + plane >= 0)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ангар переполнен");
-                    }
-                }
-            }
-        } //обработка нажатия кнопки "Приземлить военный самолёт"
-
-        private void buttonSetStorm_Click(object sender, EventArgs e)
-        {
-            if (listBoxHangars.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var plane = new Stormtrooper(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + plane >= 0)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ангар переполнен");
-
-                        }
-                    }
-                }
-            }
-        }
-
         private void buttonTakePlane_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")
@@ -139,12 +89,30 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Обработка нажатия кнопки "Забрать"
-
-
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
         } // Метод обработки выбора элемента на listBoxLevels
+        private void buttonCreatePlane_Click(object sender, EventArgs e)
+        {
+            var formPlaneConfig = new FormPlaneConfig();
+            formPlaneConfig.AddEvent(AddPlane);
+            formPlaneConfig.Show(); // вызов второй формы, не блокируя первую
+        } // Обработка нажатия кнопки "Приземлить самолёт"
+        private void AddPlane(Vehicle plane)
+        {
+            if (plane != null && listBoxHangars.SelectedIndex > -1)
+            {
+                if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane != -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Самолёт не удалось приземлить");
+                }
+            }
+        } // Метод добавления машины
     }
 }
 

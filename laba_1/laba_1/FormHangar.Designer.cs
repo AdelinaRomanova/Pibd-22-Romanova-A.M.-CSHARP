@@ -30,8 +30,6 @@ namespace WindowsFormsStormtrooper
         private void InitializeComponent()
         {
             this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
-            this.buttonSetPlane = new System.Windows.Forms.Button();
-            this.buttonSetStorm = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label = new System.Windows.Forms.Label();
@@ -41,6 +39,7 @@ namespace WindowsFormsStormtrooper
             this.textBoxNameHangar = new System.Windows.Forms.TextBox();
             this.buttonAddHangar = new System.Windows.Forms.Button();
             this.buttonDelHangar = new System.Windows.Forms.Button();
+            this.buttonCreatePlane = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -54,32 +53,12 @@ namespace WindowsFormsStormtrooper
             this.pictureBoxHangar.TabIndex = 0;
             this.pictureBoxHangar.TabStop = false;
             // 
-            // buttonSetPlane
-            // 
-            this.buttonSetPlane.Location = new System.Drawing.Point(1237, 224);
-            this.buttonSetPlane.Name = "buttonSetPlane";
-            this.buttonSetPlane.Size = new System.Drawing.Size(127, 82);
-            this.buttonSetPlane.TabIndex = 1;
-            this.buttonSetPlane.Text = "Приземлить военный самолёт";
-            this.buttonSetPlane.UseVisualStyleBackColor = true;
-            this.buttonSetPlane.Click += new System.EventHandler(this.buttonSetPlane_Click);
-            // 
-            // buttonSetStorm
-            // 
-            this.buttonSetStorm.Location = new System.Drawing.Point(1237, 312);
-            this.buttonSetStorm.Name = "buttonSetStorm";
-            this.buttonSetStorm.Size = new System.Drawing.Size(127, 57);
-            this.buttonSetStorm.TabIndex = 2;
-            this.buttonSetStorm.Text = "Приземлить штурмовик";
-            this.buttonSetStorm.UseVisualStyleBackColor = true;
-            this.buttonSetStorm.Click += new System.EventHandler(this.buttonSetStorm_Click);
-            // 
             // groupBox
             // 
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Controls.Add(this.buttonTakePlane);
-            this.groupBox.Location = new System.Drawing.Point(1212, 384);
+            this.groupBox.Location = new System.Drawing.Point(1212, 370);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(158, 109);
             this.groupBox.TabIndex = 3;
@@ -117,7 +96,7 @@ namespace WindowsFormsStormtrooper
             // 
             this.listBoxHangars.FormattingEnabled = true;
             this.listBoxHangars.ItemHeight = 16;
-            this.listBoxHangars.Location = new System.Drawing.Point(1231, 91);
+            this.listBoxHangars.Location = new System.Drawing.Point(1236, 123);
             this.listBoxHangars.Name = "listBoxHangars";
             this.listBoxHangars.Size = new System.Drawing.Size(120, 84);
             this.listBoxHangars.TabIndex = 4;
@@ -126,7 +105,7 @@ namespace WindowsFormsStormtrooper
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1257, 9);
+            this.label1.Location = new System.Drawing.Point(1259, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 5;
@@ -134,16 +113,16 @@ namespace WindowsFormsStormtrooper
             // 
             // textBoxNameHangar
             // 
-            this.textBoxNameHangar.Location = new System.Drawing.Point(1245, 29);
+            this.textBoxNameHangar.Location = new System.Drawing.Point(1245, 45);
             this.textBoxNameHangar.Name = "textBoxNameHangar";
             this.textBoxNameHangar.Size = new System.Drawing.Size(100, 22);
             this.textBoxNameHangar.TabIndex = 6;
             // 
             // buttonAddHangar
             // 
-            this.buttonAddHangar.Location = new System.Drawing.Point(1214, 57);
+            this.buttonAddHangar.Location = new System.Drawing.Point(1225, 73);
             this.buttonAddHangar.Name = "buttonAddHangar";
-            this.buttonAddHangar.Size = new System.Drawing.Size(156, 28);
+            this.buttonAddHangar.Size = new System.Drawing.Size(131, 35);
             this.buttonAddHangar.TabIndex = 7;
             this.buttonAddHangar.Text = "Добавить ангар";
             this.buttonAddHangar.UseVisualStyleBackColor = true;
@@ -151,29 +130,38 @@ namespace WindowsFormsStormtrooper
             // 
             // buttonDelHangar
             // 
-            this.buttonDelHangar.Location = new System.Drawing.Point(1212, 181);
+            this.buttonDelHangar.Location = new System.Drawing.Point(1225, 223);
             this.buttonDelHangar.Name = "buttonDelHangar";
-            this.buttonDelHangar.Size = new System.Drawing.Size(164, 33);
+            this.buttonDelHangar.Size = new System.Drawing.Size(131, 35);
             this.buttonDelHangar.TabIndex = 8;
             this.buttonDelHangar.Text = "Удалить ангар";
             this.buttonDelHangar.UseVisualStyleBackColor = true;
             this.buttonDelHangar.Click += new System.EventHandler(this.buttonDelParking_Click);
             // 
-            // FormParking
+            // buttonCreatePlane
+            // 
+            this.buttonCreatePlane.Location = new System.Drawing.Point(1236, 287);
+            this.buttonCreatePlane.Name = "buttonCreatePlane";
+            this.buttonCreatePlane.Size = new System.Drawing.Size(109, 57);
+            this.buttonCreatePlane.TabIndex = 9;
+            this.buttonCreatePlane.Text = "Добавить самолёт";
+            this.buttonCreatePlane.UseVisualStyleBackColor = true;
+            this.buttonCreatePlane.Click += new System.EventHandler(this.buttonCreatePlane_Click);
+            // 
+            // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 617);
+            this.Controls.Add(this.buttonCreatePlane);
             this.Controls.Add(this.buttonDelHangar);
             this.Controls.Add(this.buttonAddHangar);
             this.Controls.Add(this.textBoxNameHangar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxHangars);
             this.Controls.Add(this.groupBox);
-            this.Controls.Add(this.buttonSetStorm);
-            this.Controls.Add(this.buttonSetPlane);
             this.Controls.Add(this.pictureBoxHangar);
-            this.Name = "FormParking";
+            this.Name = "FormHangar";
             this.Text = "Парковка";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
@@ -186,8 +174,6 @@ namespace WindowsFormsStormtrooper
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxHangar;
-        private System.Windows.Forms.Button buttonSetPlane;
-        private System.Windows.Forms.Button buttonSetStorm;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label label;
@@ -197,5 +183,6 @@ namespace WindowsFormsStormtrooper
         private System.Windows.Forms.TextBox textBoxNameHangar;
         private System.Windows.Forms.Button buttonAddHangar;
         private System.Windows.Forms.Button buttonDelHangar;
+        private System.Windows.Forms.Button buttonCreatePlane;
     }
 }

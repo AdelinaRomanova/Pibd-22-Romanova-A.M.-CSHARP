@@ -24,9 +24,10 @@ namespace WindowsFormsStormtrooper
 		}
 		public override void DrawTransport(Graphics g)
 		{
+			base.DrawTransport(g);
 			Pen pen2 = new Pen(DopColor);
 			pen2.Width = 2.0f;
-			Brush fill3 = new SolidBrush(Color.FromArgb(109, 54, 54));
+			Brush fill3 = new SolidBrush(DopColor);
 			Brush fill4 = new SolidBrush(Color.FromArgb(239, 52, 62));
 			Brush fill5 = new SolidBrush(Color.FromArgb(240, 96, 0));
 
@@ -83,6 +84,10 @@ namespace WindowsFormsStormtrooper
 				g.FillPolygon(fill4, pol8);
 			}
 		}
+
+		public void SetDopColor(Color color) {
+			DopColor = color;
+		} // Смена дополнительного цвета
 	}
 }
 
