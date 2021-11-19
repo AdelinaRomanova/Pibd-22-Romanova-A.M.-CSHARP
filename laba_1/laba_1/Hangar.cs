@@ -28,7 +28,9 @@ namespace WindowsFormsStormtrooper
         } //конструктор
         public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
-                return -1;
+            {
+                throw new ParkingOverflowException();
+            }
             p._places.Add(plane);
                 return 1;
         } //перегрузка оператора сложения
@@ -36,12 +38,11 @@ namespace WindowsFormsStormtrooper
         {
             if (index < 0 || index > p._places.Count)
             {
-                return null;
+                throw new ParkingNotFoundException(index);
             }
             T obj = p._places[index];
             p._places.RemoveAt(index);
             return obj;
-
         }//перегрузка оператора вычитания
         public void Draw(Graphics g) {
             DrawMarking(g);

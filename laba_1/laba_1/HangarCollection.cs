@@ -51,7 +51,7 @@ namespace WindowsFormsStormtrooper
             }
         } // Доступ к парковке
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -82,15 +82,15 @@ namespace WindowsFormsStormtrooper
                     }
                 }
                 sw.Close();
-                return true;
             }
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
+
             }
             StreamReader sr = new StreamReader(filename, Encoding.UTF8);
 
@@ -102,7 +102,8 @@ namespace WindowsFormsStormtrooper
             }
             else
             {
-                return false;
+                //если нет такой записи, то это не те данные
+                throw new Exception("Неверный формат файла");
             }
 
             Vehicle plane = null;
@@ -131,10 +132,10 @@ namespace WindowsFormsStormtrooper
                 var result = hangarStages[key] + plane;
                 if (result == -1)
                 {
-                    return false;
+                    throw new Exception("Не удалось загрузить автомобиль на парковку");
                 }
+
             }
-            return true;
         }
 
     }
