@@ -59,7 +59,6 @@ namespace WindowsFormsStormtrooper
             {
                 return null;
             }
-
         }//перегрузка оператора вычитания
 
         public void Draw(Graphics g)

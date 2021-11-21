@@ -13,7 +13,6 @@ namespace WindowsFormsStormtrooper
 		protected float _startPosY;
 		protected int _pictureWidth;
 		protected int _pictureHeight;
-
 		public int MaxSpeed { protected set; get; }
 		public float Weight { protected set; get; }
 		public Color MainColor { protected set; get; } 
@@ -25,7 +24,5 @@ namespace WindowsFormsStormtrooper
 		}
 		abstract public void MoveTransport(Direction direction);
 		abstract public void DrawTransport(Graphics g);
-
-
 	}
 }
