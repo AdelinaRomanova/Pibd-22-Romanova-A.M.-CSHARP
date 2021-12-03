@@ -25,11 +25,11 @@ namespace WindowsFormsStormtrooper
 			Draw();
 		} //метод передачи машины на форму
 		private void Draw() {
-      Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
-      Graphics gr = Graphics.FromImage(bmp);
-      plane?.DrawTransport(gr);
-      pictureBoxPlane.Image = bmp;
-    } //метод отрисовки машины
+      		Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
+      		Graphics gr = Graphics.FromImage(bmp);
+      		plane?.DrawTransport(gr);
+      		pictureBoxPlane.Image = bmp;
+    		} //метод отрисовки машины
 		private void buttonCreatePlane_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
