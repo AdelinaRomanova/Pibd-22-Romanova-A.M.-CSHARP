@@ -22,7 +22,7 @@ namespace WindowsFormsStormtrooper
         {
             Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            plane.DrawTransport(gr);
+			storm.DrawTransport(gr);
             pictureBoxPlane.Image = bmp;
         }
 		//Обработка нажатия кнопки "Создать самолёт"
@@ -48,9 +48,9 @@ namespace WindowsFormsStormtrooper
 			switch (name)
 			{
 				case "buttonUp":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Up);
+						storm.MoveTransport(Direction.Up);
 					}
 					else
 					{
@@ -59,9 +59,9 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonDown":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Down);
+						storm.MoveTransport(Direction.Down);
 					}
 					else
 					{
@@ -70,9 +70,9 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonLeft":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Left);
+						storm.MoveTransport(Direction.Left);
 					}
 					else
 					{
@@ -81,9 +81,9 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonRight":
-					if (plane != null)
+					if (storm != null)
 					{
-						plane.MoveTransport(Direction.Right);
+						storm.MoveTransport(Direction.Right);
 					}
 					else
 					{
