@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,10 +100,12 @@ namespace WindowsFormsStormtrooper
                     }
                     catch (ParkingNotFoundException ex)
                     {
-                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        logger.Warn($"Попытка забрать самолёт с не существующего места");
+                        MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
+                        logger.Warn($"Неизвестная неудачная попытка забрать самолёт");
                         MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -125,7 +128,7 @@ namespace WindowsFormsStormtrooper
             {
                 try
                 {
-                    if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane != -1)
+                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) == -1)
                     {
                         Draw();
                         logger.Info($"Добавлен самолёт {plane}");
@@ -135,12 +138,18 @@ namespace WindowsFormsStormtrooper
                         MessageBox.Show("Самолёт не удалось приземлить");
                     }
                 }
+                catch (PlaneNullException ex) {
+                    logger.Warn($"Попытка приземлить неопознанный объект");
+                    MessageBox.Show(ex.Message, "Неопознанный объект", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    logger.Warn($"Попытка приземлить самолёт в уже заполненный ангар");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
+                    logger.Warn($"Неизвестная неудачная попытка приземлить самолёт в ангар");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -157,6 +166,7 @@ namespace WindowsFormsStormtrooper
                 }
                 catch (Exception ex)
                 {
+                    logger.Warn($"Неизвестная неудачная попытка сохранения файла");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -174,12 +184,27 @@ namespace WindowsFormsStormtrooper
                     ReloadLevels();
                     Draw();
                 }
-                catch (ParkingOverflowException ex)
+                catch (FileNotFoundException ex)
                 {
-                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    logger.Warn($"Попытка найти не существующий фаил для загрузки");
+                    MessageBox.Show(ex.Message, "Фаил отсутсвует", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                catch (FileFormatException ex)
+                {
+                    logger.Warn($"Попытка загрузки файла с неверным форматом");
+                    MessageBox.Show(ex.Message, "Неверный формат файла", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+                catch (TypeLoadException ex)
+                {
+                    logger.Warn($"Попытка загрузки в депо неизвестного типа обЪекта(ов)");
+                    MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
+                    logger.Warn($"Неизвестная неудачная попытка загрузки файла");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 

@@ -89,7 +89,7 @@ namespace WindowsFormsStormtrooper
         {
             if (!File.Exists(filename))
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException("Фаил не существует");
 
             }
             StreamReader sr = new StreamReader(filename, Encoding.UTF8);
@@ -103,14 +103,15 @@ namespace WindowsFormsStormtrooper
             else
             {
                 //если нет такой записи, то это не те данные
-                throw new Exception("Неверный формат файла");
+                throw new FileFormatException("Неверный формат файла");
             }
 
-            Vehicle plane = null;
+            
             string key = string.Empty;
 
             while ((line = sr.ReadLine()) != null)
             {
+                Vehicle plane = null;
                 if (line.Contains("Hangar"))
                 {
                     key = line.Split(separator)[1];
@@ -121,6 +122,7 @@ namespace WindowsFormsStormtrooper
                 {
                     continue;
                 }
+         
                 if (line.Split(separator)[0] == "Warplane")
                 {
                     plane = new Warplane(line.Split(separator)[1]);
@@ -129,10 +131,11 @@ namespace WindowsFormsStormtrooper
                 {
                     plane = new Stormtrooper(line.Split(separator)[1]);
                 }
+                Console.WriteLine(plane);
                 var result = hangarStages[key] + plane;
                 if (result == -1)
                 {
-                    throw new Exception("Не удалось загрузить автомобиль на парковку");
+                    throw new TypeLoadException("Не удалось загрузить самолёт в ангар");
                 }
 
             }

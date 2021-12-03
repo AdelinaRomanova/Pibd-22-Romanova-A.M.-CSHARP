@@ -52,6 +52,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
@@ -76,8 +77,9 @@
     <Compile Include="ITransport.cs" />
     <Compile Include="Hangar.cs" />
     <Compile Include="HangarCollection.cs" />
-    <Compile Include="ParkingNotFoundException.cs" />
-    <Compile Include="ParkingOverflowException.cs" />
+    <Compile Include="HangarNotFoundException.cs" />
+    <Compile Include="HangarOverflowException.cs" />
+    <Compile Include="PlaneNullException.cs" />
     <Compile Include="Stormtrooper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

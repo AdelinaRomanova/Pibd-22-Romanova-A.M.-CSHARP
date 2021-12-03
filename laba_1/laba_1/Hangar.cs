@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace WindowsFormsStormtrooper
 {
     public class Hangar<T> where T: class,ITransport
@@ -30,6 +29,9 @@ namespace WindowsFormsStormtrooper
             if (p._places.Count >= p._maxCount)
             {
                 throw new ParkingOverflowException();
+            }
+            if (plane == null) {
+                throw new PlaneNullException();
             }
             p._places.Add(plane);
                 return 1;
