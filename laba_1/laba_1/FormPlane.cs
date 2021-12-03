@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace WindowsFormsStormtrooper
 {
-    public partial class FormPlane : Form
-    {
-        private ITransport plane;
-        public FormPlane()
-        {
-            InitializeComponent();
-        }
+	public partial class FormPlane : Form
+    	{
+		private ITransport plane;
+		public FormPlane()
+		{
+		    InitializeComponent();
+		}
 		//метод отрисовки самолёта
-        private void Draw()
-        {
-            Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
-            Graphics gr = Graphics.FromImage(bmp);
+		private void Draw()
+		{
+			Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
+		 	Graphics gr = Graphics.FromImage(bmp);
 			storm.DrawTransport(gr);
-            pictureBoxPlane.Image = bmp;
-        }
+			pictureBoxPlane.Image = bmp;
+		}
 		//Обработка нажатия кнопки "Создать самолёт"
 		private void buttonCreatePlane_Click(object sender, EventArgs e)
 		{
@@ -96,5 +96,5 @@ namespace WindowsFormsStormtrooper
 		}
 
        
-    }
+    }	 	
 }
