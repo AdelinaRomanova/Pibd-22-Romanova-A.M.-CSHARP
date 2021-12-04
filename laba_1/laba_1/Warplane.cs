@@ -9,8 +9,8 @@ namespace WindowsFormsStormtrooper
 {
 	public class Warplane : Vehicle
 	{
-		protected readonly int planeWidth = 230;
-		protected readonly int planeHeight = 220;
+		protected readonly int planeWidth = 250;
+		protected readonly int planeHeight = 230;
 		public Warplane(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
@@ -39,14 +39,14 @@ namespace WindowsFormsStormtrooper
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX + step > 0)
+					if (_startPosX + step - 40 > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY + step > 0) 
+				if (_startPosY + step > 0) 
 					{
 						_startPosY -= step;
 					}

@@ -13,7 +13,7 @@ namespace WindowsFormsStormtrooper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPlane());
+            Application.Run(new FormHangar());
         }
     }
 }

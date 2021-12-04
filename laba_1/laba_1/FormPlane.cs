@@ -18,29 +18,33 @@ namespace WindowsFormsStormtrooper
 		    InitializeComponent();
 		}
 		//метод отрисовки самолёта
-		private void Draw()
+
+		public void SetPlane(ITransport plane)
 		{
+			this.plane = plane;
+			Draw();
+		} //метод передачи машины на форму
+		private void Draw() {
 			Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
-		 	Graphics gr = Graphics.FromImage(bmp);
-			storm.DrawTransport(gr);
+			Graphics gr = Graphics.FromImage(bmp);
+			plane?.DrawTransport(gr);
 			pictureBoxPlane.Image = bmp;
-		}
-		//Обработка нажатия кнопки "Создать самолёт"
+    		} //метод отрисовки машины
 		private void buttonCreatePlane_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
 			plane = new Warplane(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black);
 			plane.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxPlane.Width,pictureBoxPlane.Height);
 			Draw();
-		}
-		//Обработка нажатия кнопки "Создать штурмовик"
+		} //Обработка нажатия кнопки "Создать военный самолёт"
+		  
 		private void buttonCreateStormtrooper_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
 			plane = new Stormtrooper(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Black, Color.FromArgb(64, 0, 0), true, true, true);
 			plane.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxPlane.Width,pictureBoxPlane.Height);
 			Draw();
-		}
+		} //Обработка нажатия кнопки "Создать штурмовик"
 		private void buttonMove_Click(object sender, EventArgs e)
 		{
 			//получаем имя кнопки
@@ -50,7 +54,7 @@ namespace WindowsFormsStormtrooper
 				case "buttonUp":
 					if (storm != null)
 					{
-						storm.MoveTransport(Direction.Up);
+						plane?.MoveTransport(Direction.Up);
 					}
 					else
 					{
@@ -61,7 +65,7 @@ namespace WindowsFormsStormtrooper
 				case "buttonDown":
 					if (storm != null)
 					{
-						storm.MoveTransport(Direction.Down);
+						plane?.MoveTransport(Direction.Down);
 					}
 					else
 					{
@@ -72,7 +76,7 @@ namespace WindowsFormsStormtrooper
 				case "buttonLeft":
 					if (storm != null)
 					{
-						storm.MoveTransport(Direction.Left);
+						plane?.MoveTransport(Direction.Left);
 					}
 					else
 					{
@@ -83,7 +87,8 @@ namespace WindowsFormsStormtrooper
 				case "buttonRight":
 					if (storm != null)
 					{
-						storm.MoveTransport(Direction.Right);
+						plane?.MoveTransport(Direction.Right);
+
 					}
 					else
 					{
