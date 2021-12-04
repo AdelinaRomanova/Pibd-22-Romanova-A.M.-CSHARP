@@ -22,10 +22,12 @@ namespace WindowsFormsStormtrooper
 			Gun = gun;
 			Turbo = turbo;
 		}
+    
 		public override void DrawTransport(Graphics g)
 		{
 			Pen pen2 = new Pen(DopColor);
 			pen2.Width = 2.0f;
+
 			Brush fill3 = new SolidBrush(Color.FromArgb(109, 54, 54));
 			Brush fill4 = new SolidBrush(Color.FromArgb(239, 52, 62));
 			Brush fill5 = new SolidBrush(Color.FromArgb(240, 96, 0));

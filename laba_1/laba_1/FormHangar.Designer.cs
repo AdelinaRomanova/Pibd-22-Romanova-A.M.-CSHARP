@@ -180,7 +180,6 @@ namespace WindowsFormsStormtrooper
             this.groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
