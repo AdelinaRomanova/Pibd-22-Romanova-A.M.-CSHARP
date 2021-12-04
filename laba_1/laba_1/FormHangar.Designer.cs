@@ -159,7 +159,7 @@ namespace WindowsFormsStormtrooper
             this.buttonDelHangar.UseVisualStyleBackColor = true;
             this.buttonDelHangar.Click += new System.EventHandler(this.buttonDelParking_Click);
             // 
-            // FormParking
+            // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -173,8 +173,8 @@ namespace WindowsFormsStormtrooper
             this.Controls.Add(this.buttonSetStorm);
             this.Controls.Add(this.buttonSetPlane);
             this.Controls.Add(this.pictureBoxHangar);
-            this.Name = "FormParking";
-            this.Text = "Парковка";
+            this.Name = "FormHangar";
+            this.Text = "Ангар";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
