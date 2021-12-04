@@ -13,45 +13,110 @@ namespace WindowsFormsStormtrooper
 {
     public partial class FormHangar : Form
     {
-        private readonly Hangar<Warplane> hangar; //объект от класса ангара
+        private readonly HangarCollection hangarCollection; // Объект от класса-коллекции парковок
 
         public FormHangar()
         {
             InitializeComponent();
-            hangar = new Hangar<Warplane>(pictureBoxHangar.Width, pictureBoxHangar.Height);
-            Draw();
+            hangarCollection = new HangarCollection(pictureBoxHangar.Width, pictureBoxHangar.Height);
         }
+        private void ReloadLevels()
+        {
+            int index = listBoxHangars.SelectedIndex;
+            listBoxHangars.Items.Clear();
+            for (int i = 0; i < hangarCollection.Keys.Count; i++)
+            {
+                listBoxHangars.Items.Add(hangarCollection.Keys[i]);
+            }
+            if (listBoxHangars.Items.Count > 0 && (index == -1 || index >= listBoxHangars.Items.Count))
+            {
+                listBoxHangars.SelectedIndex = 0;
+            }
+            else if (listBoxHangars.Items.Count > 0 && index > -1 && index < listBoxHangars.Items.Count)
+            {
+                listBoxHangars.SelectedIndex = index;
+            }
+
+        } // Заполнение listBoxLevels
+
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            hangar.Draw(gr);
-            pictureBoxHangar.Image = bmp;
-        } //метод отрисовки ангара
+            if (listBoxHangars.SelectedIndex > -1)
+            {
+                Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                hangarCollection[listBoxHangars.SelectedItem.ToString()].Draw(gr);
+                pictureBoxHangar.Image = bmp;
+            }
+        } //метод отрисовки парковки
+
+        private void buttonAddParking_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNameHangar.Text))
+            {
+                MessageBox.Show("Введите название ангара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            hangarCollection.AddParking(textBoxNameHangar.Text);
+            ReloadLevels();
+            Draw();
+        } // Обработка нажатия кнопки "Добавить ангар"
+
+        private void buttonDelParking_Click(object sender, EventArgs e)
+        {
+            if (listBoxHangars.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить ангар { listBoxHangars.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    hangarCollection.DelParking(textBoxNameHangar.Text);
+                    ReloadLevels();
+                }
+            }
+
+        } // Обработка нажатия кнопки "Удалить ангар"
 
         private void buttonSetPlane_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxHangars.SelectedIndex > -1)
             {
-                var plane = new Warplane(100, 1000, dialog.Color);
-                int place = hangar + plane;
-                Draw();
-            } //обработка нажатия кнопки "Приземлить военный самолёт"
-        }
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var plane = new Warplane(100, 1000, dialog.Color);
+                    if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + plane >= 0)
+                    {
+                        Draw();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ангар переполнен");
+                    }
+                }
+            }
+        } //обработка нажатия кнопки "Приземлить военный самолёт"
 
         private void buttonSetStorm_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxHangars.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var plane = new Stormtrooper(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                    int place = hangar + plane;
-                    Draw();
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var plane = new Stormtrooper(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + plane >= 0)
+                        {
+                            Draw();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ангар переполнен");
+
+                        }
+                    }
                 }
             }
         }
@@ -60,16 +125,26 @@ namespace WindowsFormsStormtrooper
         {
             if (maskedTextBox.Text != "")
             {
-                var plane = hangar - Convert.ToInt32(maskedTextBox.Text);
-                if (plane != null)
+                if (listBoxHangars.SelectedIndex > -1 && maskedTextBox.Text != "")
                 {
-                    FormPlane form = new FormPlane();
-                    form.SetPlane(plane);
-                    form.ShowDialog();
+
+                    var plane = hangarCollection[listBoxHangars.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
+                    if (plane != null)
+                    {
+                        FormPlane form = new FormPlane();
+                        form.SetPlane(plane);
+                        form.ShowDialog();
+                    }
+                    Draw();
                 }
-                Draw();
             }
-        }
+        } // Обработка нажатия кнопки "Забрать"
+
+
+        private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
+        } // Метод обработки выбора элемента на listBoxLevels
     }
 }
 

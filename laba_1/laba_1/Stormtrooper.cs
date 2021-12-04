@@ -15,7 +15,7 @@ namespace WindowsFormsStormtrooper
 		public bool Turbo { private set; get; }/// Признак наличия ускорения
 
 		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool wings, bool gun, bool turbo) 
-			: base(maxSpeed, weight, mainColor, 230, 220)
+			: base(maxSpeed, weight, mainColor, 100, 60)
 		{
 			DopColor = dopColor;
 			Wings = wings;
