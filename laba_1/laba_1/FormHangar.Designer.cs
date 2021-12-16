@@ -46,6 +46,7 @@ namespace WindowsFormsStormtrooper
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -65,7 +66,7 @@ namespace WindowsFormsStormtrooper
             this.groupBox.Controls.Add(this.maskedTextBox);
             this.groupBox.Controls.Add(this.label);
             this.groupBox.Controls.Add(this.buttonTakePlane);
-            this.groupBox.Location = new System.Drawing.Point(1212, 370);
+            this.groupBox.Location = new System.Drawing.Point(1212, 419);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(158, 109);
             this.groupBox.TabIndex = 3;
@@ -147,7 +148,7 @@ namespace WindowsFormsStormtrooper
             // 
             // buttonCreatePlane
             // 
-            this.buttonCreatePlane.Location = new System.Drawing.Point(1236, 287);
+            this.buttonCreatePlane.Location = new System.Drawing.Point(1236, 336);
             this.buttonCreatePlane.Name = "buttonCreatePlane";
             this.buttonCreatePlane.Size = new System.Drawing.Size(109, 57);
             this.buttonCreatePlane.TabIndex = 9;
@@ -199,11 +200,22 @@ namespace WindowsFormsStormtrooper
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(1227, 273);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(118, 38);
+            this.buttonSort.TabIndex = 3;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 617);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonCreatePlane);
             this.Controls.Add(this.buttonDelHangar);
             this.Controls.Add(this.buttonAddHangar);
@@ -245,5 +257,6 @@ namespace WindowsFormsStormtrooper
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

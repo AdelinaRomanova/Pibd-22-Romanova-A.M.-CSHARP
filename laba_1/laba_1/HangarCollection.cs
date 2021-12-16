@@ -64,9 +64,9 @@ namespace WindowsFormsStormtrooper
                 foreach (var level in hangarStages)
                 {
                     sw.Write($"Hangar{separator}{level.Key}{Environment.NewLine}");
-                    ITransport plane = null;
-                    for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
-                    {
+                    //ITransport plane = null;
+                    foreach (ITransport plane in level.Value)
+                    { 
                         if (plane != null)
                         {
                             if (plane.GetType().Name == "Warplane")
@@ -89,7 +89,7 @@ namespace WindowsFormsStormtrooper
         {
             if (!File.Exists(filename))
             {
-                throw new FileNotFoundException("Фаил не существует");
+                throw new FileNotFoundException("Файл не существует");
 
             }
             StreamReader sr = new StreamReader(filename, Encoding.UTF8);

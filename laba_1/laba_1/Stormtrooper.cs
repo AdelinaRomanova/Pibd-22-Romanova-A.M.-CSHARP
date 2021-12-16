@@ -7,13 +7,13 @@ using System.Drawing;
 
 namespace WindowsFormsStormtrooper
 {
-	public class Stormtrooper : Warplane
-	{ 
-		public Color DopColor { private set; get; } 
+	public class Stormtrooper : Warplane, IEquatable<Stormtrooper>
+	{
+		public Color DopColor { private set; get; }
 		public bool Gun { private set; get; }  /// Признак наличия пушек
 		public bool Turbo { private set; get; }/// Признак наличия ускорения
 
-		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool gun, bool turbo) 
+		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool gun, bool turbo)
 			: base(maxSpeed, weight, mainColor, 100, 60)
 		{
 			DopColor = dopColor;
@@ -21,7 +21,7 @@ namespace WindowsFormsStormtrooper
 			Turbo = turbo;
 		}
 
-		public Stormtrooper(string info): base(info)
+		public Stormtrooper(string info) : base(info)
 		{
 			string[] strs = info.Split(separator);
 			if (strs.Length == 6)
@@ -97,13 +97,55 @@ namespace WindowsFormsStormtrooper
 			}
 		}
 
-		public void SetDopColor(Color color) {
+		public void SetDopColor(Color color)
+		{
 			DopColor = color;
 		} // Смена дополнительного цвета
 
 		public override string ToString()
 		{
-		return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Gun}{separator}{Turbo}";
+			return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Gun}{separator}{Turbo}";
+		}
+
+		public bool Equals(Stormtrooper other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (DopColor != other.DopColor)
+			{
+				return false;
+			}
+			if (Gun != other.Gun)
+			{
+				return false;
+			}
+			if (Turbo != other.Turbo)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Stormtrooper planeObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(planeObj);
+			}
 		}
 	}
 }

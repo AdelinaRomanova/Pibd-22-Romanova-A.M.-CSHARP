@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsStormtrooper 
 {
-    class ParkingOverflowException : Exception
+    class HangarOverflowException : Exception
     {
-        public ParkingOverflowException() : base("На парковке нет свободных мест")
+        public HangarOverflowException() : base("На парковке нет свободных мест")
         { }
     }
 }

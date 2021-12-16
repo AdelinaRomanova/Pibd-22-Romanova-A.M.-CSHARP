@@ -98,7 +98,7 @@ namespace WindowsFormsStormtrooper
                         }
                         Draw();
                     }
-                    catch (ParkingNotFoundException ex)
+                    catch (HangarNotFoundException ex)
                     {
                         logger.Warn($"Попытка забрать самолёт с не существующего места");
                         MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -128,7 +128,7 @@ namespace WindowsFormsStormtrooper
             {
                 try
                 {
-                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) == -1)
+                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) != -1)
                     {
                         Draw();
                         logger.Info($"Добавлен самолёт {plane}");
@@ -142,7 +142,7 @@ namespace WindowsFormsStormtrooper
                     logger.Warn($"Попытка приземлить неопознанный объект");
                     MessageBox.Show(ex.Message, "Неопознанный объект", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (ParkingOverflowException ex)
+                catch (HangarOverflowException ex)
                 {
                     logger.Warn($"Попытка приземлить самолёт в уже заполненный ангар");
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -163,6 +163,16 @@ namespace WindowsFormsStormtrooper
                     hangarCollection.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     logger.Info("Сохранено в файл " + saveFileDialog.FileName);
+                }
+                catch (HangarOverflowException ex)
+                {
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (HangarAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -209,6 +219,17 @@ namespace WindowsFormsStormtrooper
                 }
 
             }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxHangars.SelectedIndex > -1)
+            {
+                hangarCollection[listBoxHangars.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
+
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace WindowsFormsStormtrooper
 {
-	public class Warplane : Vehicle
+	public class Warplane : Vehicle, IEquatable<Warplane>
 	{
 		protected readonly int planeWidth = 250;
 		protected readonly int planeHeight = 230;
@@ -15,7 +15,8 @@ namespace WindowsFormsStormtrooper
 			MainColor = mainColor;
 		}
 
-		public Warplane(string info) {
+		public Warplane(string info)
+		{
 			string[] strs = info.Split(separator);
 			if (strs.Length == 3)
 			{
@@ -47,14 +48,14 @@ namespace WindowsFormsStormtrooper
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX + step - 40 > 0)
+					if (_startPosX + step > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY + step - 105 > 0)
+					if (_startPosY + step > 0)
 					{
 						_startPosY -= step;
 					}
@@ -73,7 +74,7 @@ namespace WindowsFormsStormtrooper
 			Pen pen = new Pen(Color.Black);
 			pen.Width = 1.0f;
 			Brush fill = new SolidBrush(Color.FromArgb(0, 0, 0));
-			Brush fill2 = new SolidBrush(MainColor) ;
+			Brush fill2 = new SolidBrush(MainColor);
 
 			g.FillRectangle(fill2, _startPosX + 30, _startPosY + 100, 190, 30); // корпус
 			g.DrawRectangle(pen, _startPosX + 30, _startPosY + 100, 190, 30);
@@ -147,11 +148,53 @@ namespace WindowsFormsStormtrooper
 			g.DrawPolygon(pen, pol5);
 		}
 
-        public override string ToString()
-        {
-            return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
-        }
-    }
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
+		}
+
+		public bool Equals(Warplane other)
+		{
+
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Warplane planeObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(planeObj);
+			}
+		}
+	}
 }
         
 

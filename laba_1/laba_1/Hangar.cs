@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsStormtrooper
 {
-    public class Hangar<T> where T: class,ITransport
+    public class Hangar<T> : IEnumerator<T>, IEnumerable<T>
+        where T : class,ITransport
     {
         private readonly List<T> _places; // список объектов, которые храним
         private readonly int _maxCount; 
@@ -16,6 +18,10 @@ namespace WindowsFormsStormtrooper
         private readonly int pictureHeight; 
         private readonly int _placeSizeWidht = 280; 
         private readonly int _placeSizeHeight = 240; 
+
+        private int _currentIndex; // Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
+        public T Current => _places[_currentIndex];
+        object IEnumerator.Current => _places[_currentIndex];
 
         public Hangar(int picWidht, int picHeight) {
             int widht = picWidht / _placeSizeWidht;
@@ -28,10 +34,11 @@ namespace WindowsFormsStormtrooper
         public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
             {
-                throw new ParkingOverflowException();
+                throw new HangarOverflowException();
             }
-            if (plane == null) {
-                throw new PlaneNullException();
+            if (p._places.Contains(plane))
+            {
+                throw new HangarAlreadyHaveException();
             }
             p._places.Add(plane);
                 return 1;
@@ -40,7 +47,7 @@ namespace WindowsFormsStormtrooper
         {
             if (index < 0 || index > p._places.Count)
             {
-                throw new ParkingNotFoundException(index);
+                throw new HangarNotFoundException(index);
             }
             T obj = p._places[index];
             p._places.RemoveAt(index);
@@ -63,6 +70,7 @@ namespace WindowsFormsStormtrooper
                 g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         } // Метод отрисовки разметки парковочных мест
+
         public T GetNext(int index)
         {
             if (index < 0 || index >= _places.Count)
@@ -70,6 +78,31 @@ namespace WindowsFormsStormtrooper
                 return null;
             }
             return _places[index];
-        } // Функция получения элементы из списка
-    } 
+        } // Функция получения элемента из списка
+
+        public void Sort() => _places.Sort((IComparer<T>)new WarplaneComparer()); // Сортировка автомобилей на парковке
+
+        public void Dispose()
+        {
+        } // Метод интерфейса IEnumerator, вызываемый при удалении объекта
+
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            return (_currentIndex < _places.Count());
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+    }
 }
