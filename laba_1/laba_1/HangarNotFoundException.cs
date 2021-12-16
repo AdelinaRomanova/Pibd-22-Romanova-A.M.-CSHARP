@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsStormtrooper 
 {
-    class ParkingNotFoundException : Exception
+    class HangarNotFoundException : Exception
     {
-        public ParkingNotFoundException(int i) : base("Не найден автомобиль по месту " + i)
+        public HangarNotFoundException(int i) : base("Не найден самолёт по месту " + i)
         {
         }
     }

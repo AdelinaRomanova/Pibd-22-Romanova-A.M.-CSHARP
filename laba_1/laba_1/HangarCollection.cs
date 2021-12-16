@@ -89,7 +89,7 @@ namespace WindowsFormsStormtrooper
         {
             if (!File.Exists(filename))
             {
-                throw new FileNotFoundException("Фаил не существует");
+                throw new FileNotFoundException("Файл не существует");
 
             }
             StreamReader sr = new StreamReader(filename, Encoding.UTF8);
@@ -131,7 +131,7 @@ namespace WindowsFormsStormtrooper
                 {
                     plane = new Stormtrooper(line.Split(separator)[1]);
                 }
-                Console.WriteLine(plane);
+
                 var result = hangarStages[key] + plane;
                 if (result == -1)
                 {

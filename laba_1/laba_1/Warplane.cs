@@ -51,14 +51,14 @@ namespace WindowsFormsStormtrooper
 					break;
 				//влево
 				case Direction.Left:
-					if (_startPosX + step - 40 > 0)
+					if (_startPosX + step > 0)
 					{
 						_startPosX -= step;
 					}
 					break;
 				//вверх
 				case Direction.Up:
-					if (_startPosY + step - 105 > 0)
+					if (_startPosY + step > 0)
 					{
 						_startPosY -= step;
 					}

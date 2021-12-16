@@ -98,7 +98,7 @@ namespace WindowsFormsStormtrooper
                         }
                         Draw();
                     }
-                    catch (ParkingNotFoundException ex)
+                    catch (HangarNotFoundException ex)
                     {
                         logger.Warn($"Попытка забрать самолёт с не существующего места");
                         MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -128,7 +128,7 @@ namespace WindowsFormsStormtrooper
             {
                 try
                 {
-                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) == -1)
+                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) != -1)
                     {
                         Draw();
                         logger.Info($"Добавлен самолёт {plane}");
@@ -142,7 +142,7 @@ namespace WindowsFormsStormtrooper
                     logger.Warn($"Попытка приземлить неопознанный объект");
                     MessageBox.Show(ex.Message, "Неопознанный объект", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (ParkingOverflowException ex)
+                catch (HangarOverflowException ex)
                 {
                     logger.Warn($"Попытка приземлить самолёт в уже заполненный ангар");
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);

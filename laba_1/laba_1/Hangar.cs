@@ -28,10 +28,7 @@ namespace WindowsFormsStormtrooper
         public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
             {
-                throw new ParkingOverflowException();
-            }
-            if (plane == null) {
-                throw new PlaneNullException();
+                throw new HangarOverflowException();
             }
             p._places.Add(plane);
                 return 1;
@@ -40,7 +37,7 @@ namespace WindowsFormsStormtrooper
         {
             if (index < 0 || index > p._places.Count)
             {
-                throw new ParkingNotFoundException(index);
+                throw new HangarNotFoundException(index);
             }
             T obj = p._places[index];
             p._places.RemoveAt(index);
