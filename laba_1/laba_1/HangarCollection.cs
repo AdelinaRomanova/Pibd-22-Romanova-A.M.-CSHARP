@@ -50,7 +50,7 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Доступ к парковке
-        public void SaveData(string filename)
+        public bool SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -83,7 +83,7 @@ namespace WindowsFormsStormtrooper
                 sw.Close();
             }
         }
-        public void LoadData(string filename)
+        public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -128,7 +128,7 @@ namespace WindowsFormsStormtrooper
                 {
                     plane = new Stormtrooper(line.Split(separator)[1]);
                 }
-                Console.WriteLine(plane);
+
                 var result = hangarStages[key] + plane;
                 if (result == -1)
                 {

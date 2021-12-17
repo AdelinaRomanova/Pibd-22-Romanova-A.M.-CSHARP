@@ -227,7 +227,7 @@ namespace WindowsFormsStormtrooper
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHangar";
-            this.Text = "Парковка";
+            this.Text = "Ангар";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
@@ -235,7 +235,6 @@ namespace WindowsFormsStormtrooper
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

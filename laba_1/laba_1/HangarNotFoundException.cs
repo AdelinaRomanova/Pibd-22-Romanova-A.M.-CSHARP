@@ -8,7 +8,7 @@ namespace WindowsFormsStormtrooper
 {
     class HangarNotFoundException : Exception
     {
-        public HangarNotFoundException(int i) : base("Не найден автомобиль по месту " + i)
+        public HangarNotFoundException(int i) : base("Не найден самолёт по месту " + i)
         {
         }
     }

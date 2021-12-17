@@ -14,8 +14,7 @@ namespace WindowsFormsStormtrooper
 			Weight = weight;
 			MainColor = mainColor;
 		}
-		public Warplane(string info)
-		{
+		public Warplane(string info) {
 			string[] strs = info.Split(separator);
 			if (strs.Length == 3)
 			{

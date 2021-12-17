@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsStormtrooper
 {
-    public partial class FormPlane : Form
-    {
-        private ITransport plane;
-        public FormPlane()
-        {
-            InitializeComponent();
-        }
+	public partial class FormPlane : Form
+    	{
+		private ITransport plane;
+		public FormPlane()
+		{
+		    InitializeComponent();
+		}
 		//метод отрисовки самолёта
 
 		public void SetPlane(ITransport plane)
@@ -25,11 +25,11 @@ namespace WindowsFormsStormtrooper
 			Draw();
 		} //метод передачи машины на форму
 		private void Draw() {
-            Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            plane?.DrawTransport(gr);
-            pictureBoxPlane.Image = bmp;
-        } //метод отрисовки машины
+			Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
+			Graphics gr = Graphics.FromImage(bmp);
+			plane?.DrawTransport(gr);
+			pictureBoxPlane.Image = bmp;
+    		} //метод отрисовки машины
 		private void buttonCreatePlane_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
@@ -52,7 +52,7 @@ namespace WindowsFormsStormtrooper
 			switch (name)
 			{
 				case "buttonUp":
-					if (plane != null)
+					if (storm != null)
 					{
 						plane?.MoveTransport(Direction.Up);
 					}
@@ -63,7 +63,7 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonDown":
-					if (plane != null)
+					if (storm != null)
 					{
 						plane?.MoveTransport(Direction.Down);
 					}
@@ -74,7 +74,7 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonLeft":
-					if (plane != null)
+					if (storm != null)
 					{
 						plane?.MoveTransport(Direction.Left);
 					}
@@ -85,9 +85,10 @@ namespace WindowsFormsStormtrooper
 					}
 					break;
 				case "buttonRight":
-					if (plane != null)
+					if (storm != null)
 					{
 						plane?.MoveTransport(Direction.Right);
+
 					}
 					else
 					{
@@ -100,5 +101,5 @@ namespace WindowsFormsStormtrooper
 		}
 
        
-    }
+    }	 	
 }

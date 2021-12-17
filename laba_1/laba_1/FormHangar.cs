@@ -122,6 +122,7 @@ namespace WindowsFormsStormtrooper
             formPlaneConfig.AddEvent(AddPlane);
             formPlaneConfig.Show(); // вызов второй формы, не блокируя первую
         } // Обработка нажатия кнопки "Приземлить самолёт"
+
         private void AddPlane(Vehicle plane)
         {
             if (plane != null && listBoxHangars.SelectedIndex > -1)
@@ -176,8 +177,6 @@ namespace WindowsFormsStormtrooper
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
                 try
                 {
                     hangarCollection.LoadData(openFileDialog.FileName);

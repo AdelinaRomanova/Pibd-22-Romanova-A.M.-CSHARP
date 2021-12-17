@@ -95,8 +95,7 @@ namespace WindowsFormsStormtrooper
 				g.FillPolygon(fill3, pol8);
 			}
 		}
-		public void SetDopColor(Color color)
-		{
+		public void SetDopColor(Color color) {
 			DopColor = color;
 		} // Смена дополнительного цвета
 		public override string ToString()
