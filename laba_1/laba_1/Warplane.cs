@@ -62,10 +62,10 @@ namespace WindowsFormsStormtrooper
 		}
 		public override void DrawTransport(Graphics g)
 		{
-			Pen pen = new Pen(MainColor);
+			Pen pen = new Pen(Color.Black);
 			pen.Width = 1.0f;
 			Brush fill = new SolidBrush(Color.FromArgb(0, 0, 0));
-			Brush fill2 = new SolidBrush(Color.FromArgb(127, 127, 127));
+			Brush fill2 = new SolidBrush(MainColor) ;
 
 			g.FillRectangle(fill2, _startPosX + 30, _startPosY + 100, 190, 30); // корпус
 			g.DrawRectangle(pen, _startPosX + 30, _startPosY + 100, 190, 30);

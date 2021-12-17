@@ -8,6 +8,7 @@ namespace WindowsFormsStormtrooper
 {
     static class Program
     {
+
         [STAThread]
         static void Main()
         {
