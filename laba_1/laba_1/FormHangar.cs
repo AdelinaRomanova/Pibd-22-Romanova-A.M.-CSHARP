@@ -113,7 +113,7 @@ namespace WindowsFormsStormtrooper
         } // Обработка нажатия кнопки "Забрать"
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
-            logger.Info($"Перешли на парковку{listBoxHangars.SelectedItem.ToString()}");
+            logger.Info($"Перешли на ангар{listBoxHangars.SelectedItem.ToString()}");
             Draw();
         } // Метод обработки выбора элемента на listBoxLevels
         private void buttonCreatePlane_Click(object sender, EventArgs e)
@@ -137,10 +137,6 @@ namespace WindowsFormsStormtrooper
                     {
                         MessageBox.Show("Самолёт не удалось приземлить");
                     }
-                }
-                catch (PlaneNullException ex) {
-                    logger.Warn($"Попытка приземлить неопознанный объект");
-                    MessageBox.Show(ex.Message, "Неопознанный объект", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (HangarOverflowException ex)
                 {
@@ -171,7 +167,6 @@ namespace WindowsFormsStormtrooper
                 }
             }
         }
-
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -198,7 +193,7 @@ namespace WindowsFormsStormtrooper
                 }
                 catch (TypeLoadException ex)
                 {
-                    logger.Warn($"Попытка загрузки в депо неизвестного типа обЪекта(ов)");
+                    logger.Warn($"Попытка загрузки в ангар неизвестного типа обЪекта");
                     MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 }
