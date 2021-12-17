@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace WindowsFormsStormtrooper
 {
-	public class Warplane : Vehicle
+	public class Warplane : Vehicle, IEquatable<Warplane>
 	{
 		protected readonly int planeWidth = 250;
 		protected readonly int planeHeight = 230;
@@ -148,11 +144,50 @@ namespace WindowsFormsStormtrooper
 			g.FillPolygon(fill2, pol5);
 			g.DrawPolygon(pen, pol5);
 		}
-        public override string ToString()
-        {
-            return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
-        }
-    }
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
+		}
+		public bool Equals(Warplane other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Warplane planeObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(planeObj);
+			}
+		}
+	}
 }
         
 

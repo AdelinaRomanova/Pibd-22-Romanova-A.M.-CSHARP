@@ -63,9 +63,9 @@ namespace WindowsFormsStormtrooper
                 foreach (var level in hangarStages)
                 {
                     sw.Write($"Hangar{separator}{level.Key}{Environment.NewLine}");
-                    ITransport plane = null;
-                    for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
-                    {
+                    //ITransport plane = null;
+                    foreach (ITransport plane in level.Value)
+                    { 
                         if (plane != null)
                         {
                             if (plane.GetType().Name == "Warplane")
@@ -103,7 +103,6 @@ namespace WindowsFormsStormtrooper
                 //если нет такой записи, то это не те данные
                 throw new FileFormatException("Неверный формат файла");
             }
-
             
             string key = string.Empty;
 

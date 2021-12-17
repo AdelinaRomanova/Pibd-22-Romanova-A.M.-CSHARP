@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;                                                                                                                                                                                                                   коллекции
 
 namespace WindowsFormsStormtrooper
 {
-    public class Hangar<T> where T: class,ITransport
+    public class Hangar<T> : IEnumerator<T>, IEnumerable<T>
+        where T : class,ITransport
     {
         private readonly List<T> _places; // список объектов, которые храним
         private readonly int _maxCount; 
@@ -17,6 +19,9 @@ namespace WindowsFormsStormtrooper
         private readonly int _placeSizeWidht = 280; 
         private readonly int _placeSizeHeight = 240; 
 
+        private int _currentIndex; // Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
+        public T Current => _places[_currentIndex];
+        object IEnumerator.Current => _places[_currentIndex];
         public Hangar(int picWidht, int picHeight) {
             int widht = picWidht / _placeSizeWidht;
             int height = picHeight / _placeSizeHeight;
@@ -29,6 +34,10 @@ namespace WindowsFormsStormtrooper
             if (p._places.Count >= p._maxCount)
             {
                 throw new HangarOverflowException();
+            }
+            if (p._places.Contains(plane))
+            {
+                throw new HangarAlreadyHaveException();
             }
             p._places.Add(plane);
                 return 1;
@@ -67,7 +76,28 @@ namespace WindowsFormsStormtrooper
                 return null;
             }
             return _places[index];
-        } // Функция получения элементы из списка
-    } 
+        } // Функция получения элемента из списка
+        public void Sort() => _places.Sort((IComparer<T>)new WarplaneComparer()); // Сортировка автомобилей на парковке
+        public void Dispose()
+        {
+        } // Метод интерфейса IEnumerator, вызываемый при удалении объекта
+        public bool MoveNext()
+        {
+            _currentIndex++;
+            return (_currentIndex < _places.Count());
+        }
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
+        }
+    }
 }
 

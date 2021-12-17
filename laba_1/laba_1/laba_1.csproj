@@ -74,6 +74,7 @@
     <Compile Include="FormPlaneConfig.Designer.cs">
       <DependentUpon>FormPlaneConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="HangarAlreadyHaveException.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Hangar.cs" />
     <Compile Include="HangarCollection.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Warplane.cs" />
+    <Compile Include="WarplaneComparer.cs" />
     <EmbeddedResource Include="FormHangar.resx">
       <DependentUpon>FormHangar.cs</DependentUpon>
     </EmbeddedResource>
