@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,13 @@ namespace WindowsFormsStormtrooper
 {
     class HangarCollection
     {
-        readonly Dictionary<string, Hangar<Vehicle>> hangarStages; // Словарь (хранилище) с парковками
-        public List<string> Keys => hangarStages.Keys.ToList(); // Возвращение списка названий парковок
-        private readonly int pictureWidth; 
-        private readonly int pictureHeight; 
+        readonly Dictionary<string, Hangar<Vehicle>> hangarStages; // Словарь (хранилище) с ангарами
+        public List<string> Keys => hangarStages.Keys.ToList(); // Возвращение списка названий ангаров
+
+        private readonly int pictureWidth;
+        private readonly int pictureHeight;
+
+        private readonly char separator = ':';
         public HangarCollection(int pictureWidth, int pictureHeight)
         {
             hangarStages = new Dictionary<string, Hangar<Vehicle>>();
@@ -46,20 +50,89 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Доступ к парковке
-
-        public Hangar<Vehicle> this[int ind]
+        public bool SaveData(string filename)
         {
-            get
+            if (File.Exists(filename))
             {
-                if (ind > -1 && ind < Keys.Count)
+                File.Delete(filename);
+            }
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            {
+                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+                sw.Write($"HangarsCollection{Environment.NewLine}");
+                foreach (var level in hangarStages)
                 {
-                    return hangarStages[Keys[ind]];
+                    sw.Write($"Hangar{separator}{level.Key}{Environment.NewLine}");
+                    ITransport plane = null;
+                    for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
+                    {
+                        if (plane != null)
+                        {
+                            if (plane.GetType().Name == "Warplane")
+                            {
+                                sw.Write($"Warplane{separator}");
+                            }
+                            if (plane.GetType().Name == "Stormtrooper")
+                            {
+                                sw.Write($"Stormtrooper{separator}");
+                            }
+                            sw.Write(plane + Environment.NewLine);
+                        }
+                    }
                 }
-                else
+                sw.Close();
+                return true;
+            }
+        }
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+            StreamReader sr = new StreamReader(filename, Encoding.UTF8);
+
+            string line = sr.ReadLine();
+
+            if (line.Contains("HangarsCollection"))
+            {
+                hangarStages.Clear();
+            }
+            else
+            {
+                return false;
+            }
+
+            Vehicle plane = null;
+            string key = string.Empty;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line.Contains("Hangar"))
                 {
-                    return null;
+                    key = line.Split(separator)[1];
+                    hangarStages.Add(key, new Hangar<Vehicle>(pictureWidth, pictureHeight));
+                    continue;
+                }
+                if (string.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+                if (line.Split(separator)[0] == "Warplane")
+                {
+                    plane = new Warplane(line.Split(separator)[1]);
+                }
+                else if (line.Split(separator)[0] == "Stormtrooper")
+                {
+                    plane = new Stormtrooper(line.Split(separator)[1]);
+                }
+                var result = hangarStages[key] + plane;
+                if (result == -1)
+                {
+                    return false;
                 }
             }
+            return true;
         }
     }
 }
