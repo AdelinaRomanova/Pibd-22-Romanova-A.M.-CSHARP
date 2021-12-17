@@ -43,7 +43,6 @@ namespace WindowsFormsStormtrooper
             T obj = p._places[index];
             p._places.RemoveAt(index);
             return obj;
-
         }//перегрузка оператора вычитания
 
         public void Draw(Graphics g) {
@@ -64,6 +63,6 @@ namespace WindowsFormsStormtrooper
                 g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         }
-
     }
 }
+

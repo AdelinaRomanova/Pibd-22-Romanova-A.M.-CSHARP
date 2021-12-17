@@ -20,6 +20,7 @@ namespace WindowsFormsStormtrooper
 			Gun = gun;
 			Turbo = turbo;
 		}
+    
 		public override void DrawTransport(Graphics g)
 		{
 			base.DrawTransport(g);

@@ -162,13 +162,12 @@ namespace WindowsFormsStormtrooper
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.pictureBoxHangar);
             this.Name = "FormHangar";
-            this.Text = "Парковка";
+            this.Text = "Ангар";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

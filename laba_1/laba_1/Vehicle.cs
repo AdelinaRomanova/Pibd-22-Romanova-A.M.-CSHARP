@@ -30,7 +30,5 @@ namespace WindowsFormsStormtrooper
 		}
 		abstract public void MoveTransport(Direction direction);
 		abstract public void DrawTransport(Graphics g);
-
-
 	}
 }
