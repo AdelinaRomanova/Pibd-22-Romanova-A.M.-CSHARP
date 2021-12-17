@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace WindowsFormsStormtrooper
 {
     public class Hangar<T> where T: class,ITransport
@@ -28,7 +27,9 @@ namespace WindowsFormsStormtrooper
         } //конструктор
         public static int operator +(Hangar<T> p, T plane) {
             if (p._places.Count >= p._maxCount)
-                return -1;
+            {
+                throw new HangarOverflowException();
+            }
             p._places.Add(plane);
                 return 1;
         } //перегрузка оператора сложения
@@ -36,7 +37,7 @@ namespace WindowsFormsStormtrooper
         {
             if (index < 0 || index > p._places.Count)
             {
-                return null;
+                throw new HangarNotFoundException(index);
             }
             T obj = p._places[index];
             p._places.RemoveAt(index);

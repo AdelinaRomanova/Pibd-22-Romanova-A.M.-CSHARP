@@ -81,14 +81,14 @@ namespace WindowsFormsStormtrooper
                     }
                 }
                 sw.Close();
-                return true;
             }
         }
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException("Файл не существует");
+
             }
             StreamReader sr = new StreamReader(filename, Encoding.UTF8);
 
@@ -100,14 +100,16 @@ namespace WindowsFormsStormtrooper
             }
             else
             {
-                return false;
+                //если нет такой записи, то это не те данные
+                throw new FileFormatException("Неверный формат файла");
             }
 
-            Vehicle plane = null;
+            
             string key = string.Empty;
 
             while ((line = sr.ReadLine()) != null)
             {
+                Vehicle plane = null;
                 if (line.Contains("Hangar"))
                 {
                     key = line.Split(separator)[1];
@@ -118,6 +120,7 @@ namespace WindowsFormsStormtrooper
                 {
                     continue;
                 }
+         
                 if (line.Split(separator)[0] == "Warplane")
                 {
                     plane = new Warplane(line.Split(separator)[1]);
@@ -126,13 +129,14 @@ namespace WindowsFormsStormtrooper
                 {
                     plane = new Stormtrooper(line.Split(separator)[1]);
                 }
+
                 var result = hangarStages[key] + plane;
                 if (result == -1)
                 {
-                    return false;
+                    throw new TypeLoadException("Не удалось загрузить самолёт в ангар");
                 }
+
             }
-            return true;
         }
     }
 }

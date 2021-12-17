@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +16,14 @@ namespace WindowsFormsStormtrooper
     public partial class FormHangar : Form
     {
         private readonly HangarCollection hangarCollection; // Объект от класса-коллекции парковок
+        private readonly Logger logger; // Логгер
+
         public FormHangar()
         {
             InitializeComponent();
             hangarCollection = new HangarCollection(pictureBoxHangar.Width, pictureBoxHangar.Height);
+            logger = LogManager.GetCurrentClassLogger();
+
         }
         private void ReloadLevels()
         {
@@ -54,6 +60,7 @@ namespace WindowsFormsStormtrooper
                 MessageBox.Show("Введите название ангара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            logger.Info($"Добавили ангар {textBoxNameHangar.Text}");
             hangarCollection.AddParking(textBoxNameHangar.Text);
             ReloadLevels();
             Draw();
@@ -64,6 +71,7 @@ namespace WindowsFormsStormtrooper
             {
                 if (MessageBox.Show($"Удалить ангар { listBoxHangars.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    logger.Info($"Удалили ангар{listBoxHangars.SelectedItem.ToString()}");
                     hangarCollection.DelParking(textBoxNameHangar.Text);
                     ReloadLevels();
                 }
@@ -76,20 +84,36 @@ namespace WindowsFormsStormtrooper
             {
                 if (listBoxHangars.SelectedIndex > -1 && maskedTextBox.Text != "")
                 {
-
-                    var plane = hangarCollection[listBoxHangars.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
-                    if (plane != null)
+                    try
                     {
-                        FormPlane form = new FormPlane();
-                        form.SetPlane(plane);
-                        form.ShowDialog();
+                        var plane = hangarCollection[listBoxHangars.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
+                        if (plane != null)
+                        {
+                            FormPlane form = new FormPlane();
+                            form.SetPlane(plane);
+                            form.ShowDialog();
+
+                            logger.Info($"Изъят самолёт {plane} с места{maskedTextBox.Text}");
+
+                        }
+                        Draw();
                     }
-                    Draw();
+                    catch (HangarNotFoundException ex)
+                    {
+                        logger.Warn($"Попытка забрать самолёт с не существующего места");
+                        MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Warn($"Неизвестная неудачная попытка забрать самолёт");
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         } // Обработка нажатия кнопки "Забрать"
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logger.Info($"Перешли на ангар{listBoxHangars.SelectedItem.ToString()}");
             Draw();
         } // Метод обработки выбора элемента на listBoxLevels
         private void buttonCreatePlane_Click(object sender, EventArgs e)
@@ -103,46 +127,79 @@ namespace WindowsFormsStormtrooper
         {
             if (plane != null && listBoxHangars.SelectedIndex > -1)
             {
-                if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane != -1)
+                try
                 {
-                    Draw();
+                    if (((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + plane ) != -1)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен самолёт {plane}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Самолёт не удалось приземлить");
+                    }
                 }
-                else
+                catch (HangarOverflowException ex)
                 {
-                    MessageBox.Show("Самолёт не удалось приземлить");
+                    logger.Warn($"Попытка приземлить самолёт в уже заполненный ангар");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn($"Неизвестная неудачная попытка приземлить самолёт в ангар");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        } // Метод добавления самолёта
+        }// Метод добавления машины
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (hangarCollection.SaveData(saveFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    hangarCollection.SaveData(saveFileDialog.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn($"Неизвестная неудачная попытка сохранения файла");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (hangarCollection.LoadData(openFileDialog.FileName))
-                {
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ReloadLevels();
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                hangarCollection.LoadData(openFileDialog.FileName);
+                MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Info("Загружено из файла " + openFileDialog.FileName);
+                ReloadLevels();
+                Draw();
+            }
+            catch (FileNotFoundException ex)
+            {
+                logger.Warn($"Попытка найти не существующий фаил для загрузки");
+                MessageBox.Show(ex.Message, "Фаил отсутсвует", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (FileFormatException ex)
+            {
+                logger.Warn($"Попытка загрузки файла с неверным форматом");
+                MessageBox.Show(ex.Message, "Неверный формат файла", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (TypeLoadException ex)
+            {
+                logger.Warn($"Попытка загрузки в ангар неизвестного типа обЪекта");
+                MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                logger.Warn($"Неизвестная неудачная попытка загрузки файла");
+                MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }  
     }

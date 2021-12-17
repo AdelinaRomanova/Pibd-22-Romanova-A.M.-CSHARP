@@ -26,7 +26,6 @@ namespace WindowsFormsStormtrooper
 				Weight = Convert.ToInt32(strs[1]);
 				MainColor = Color.FromName(strs[2]);
 			}
-
 		}
 		protected Warplane(int maxSpeed, float weight, Color mainColor, int planeWidth, int planeHeight)
 		{
