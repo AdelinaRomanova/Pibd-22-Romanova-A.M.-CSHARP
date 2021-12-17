@@ -27,7 +27,6 @@ namespace WindowsFormsStormtrooper
             panelColorPink.MouseDown += panelColor_MouseDown;
 
             buttonCancel.Click += (object sender, EventArgs e) => { Close(); };
-
         }
         private void DrawPlane()
         {
@@ -114,7 +113,6 @@ namespace WindowsFormsStormtrooper
                 DrawPlane();
             }
         }
-
         private void buttonAddPlane_Click(object sender, EventArgs e)
         {
             eventAddPlane?.Invoke(plane);

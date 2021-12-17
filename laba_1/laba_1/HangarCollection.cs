@@ -50,7 +50,6 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Доступ к парковке
-
         public bool SaveData(string filename)
         {
             if (File.Exists(filename))
@@ -85,7 +84,6 @@ namespace WindowsFormsStormtrooper
                 return true;
             }
         }
-
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -136,6 +134,5 @@ namespace WindowsFormsStormtrooper
             }
             return true;
         }
-
     }
 }

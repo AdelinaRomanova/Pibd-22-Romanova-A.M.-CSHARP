@@ -14,7 +14,6 @@ namespace WindowsFormsStormtrooper
     public partial class FormHangar : Form
     {
         private readonly HangarCollection hangarCollection; // Объект от класса-коллекции парковок
-
         public FormHangar()
         {
             InitializeComponent();
@@ -113,18 +112,7 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Метод добавления машины
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        } // Обработка нажатия пункта меню "Сохранить"
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void saveToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -140,8 +128,7 @@ namespace WindowsFormsStormtrooper
                 }
             }
         }
-
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
