@@ -98,6 +98,7 @@ namespace WindowsFormsStormtrooper
             formPlaneConfig.AddEvent(AddPlane);
             formPlaneConfig.Show(); // вызов второй формы, не блокируя первую
         } // Обработка нажатия кнопки "Приземлить самолёт"
+
         private void AddPlane(Vehicle plane)
         {
             if (plane != null && listBoxHangars.SelectedIndex > -1)
@@ -111,7 +112,7 @@ namespace WindowsFormsStormtrooper
                     MessageBox.Show("Самолёт не удалось приземлить");
                 }
             }
-        } // Метод добавления машины
+        } // Метод добавления самолёта
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -143,7 +144,7 @@ namespace WindowsFormsStormtrooper
                     MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        }  
     }
 }
 

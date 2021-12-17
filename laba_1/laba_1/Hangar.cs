@@ -41,7 +41,6 @@ namespace WindowsFormsStormtrooper
             T obj = p._places[index];
             p._places.RemoveAt(index);
             return obj;
-
         }//перегрузка оператора вычитания
         public void Draw(Graphics g) {
             DrawMarking(g);
@@ -70,3 +69,4 @@ namespace WindowsFormsStormtrooper
         } // Функция получения элементы из списка
     } 
 }
+
