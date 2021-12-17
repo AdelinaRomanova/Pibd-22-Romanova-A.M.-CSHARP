@@ -10,9 +10,8 @@ namespace WindowsFormsStormtrooper
 	public class Stormtrooper : Warplane
 	{ 
 		public Color DopColor { private set; get; } 
-		public bool Gun { private set; get; }  /// Признак наличия пушек
-		public bool Turbo { private set; get; }/// Признак наличия ускорения
-
+		public bool Gun { private set; get; } // Признак наличия пушек
+		public bool Turbo { private set; get; } // Признак наличия ускорения
 		public Stormtrooper(int maxSpeed, float weight, Color mainColor, Color dopColor, bool gun, bool turbo) 
 			: base(maxSpeed, weight, mainColor, 100, 60)
 		{

@@ -122,6 +122,7 @@ namespace WindowsFormsStormtrooper
             formPlaneConfig.AddEvent(AddPlane);
             formPlaneConfig.Show(); // вызов второй формы, не блокируя первую
         } // Обработка нажатия кнопки "Приземлить самолёт"
+
         private void AddPlane(Vehicle plane)
         {
             if (plane != null && listBoxHangars.SelectedIndex > -1)
@@ -200,7 +201,7 @@ namespace WindowsFormsStormtrooper
                 logger.Warn($"Неизвестная неудачная попытка загрузки файла");
                 MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }  
     }
 }
 

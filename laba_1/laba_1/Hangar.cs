@@ -70,3 +70,4 @@ namespace WindowsFormsStormtrooper
         } // Функция получения элементы из списка
     } 
 }
+

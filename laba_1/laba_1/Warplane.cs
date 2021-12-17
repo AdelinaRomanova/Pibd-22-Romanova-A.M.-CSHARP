@@ -18,7 +18,6 @@ namespace WindowsFormsStormtrooper
 			Weight = weight;
 			MainColor = mainColor;
 		}
-
 		public Warplane(string info) {
 			string[] strs = info.Split(separator);
 			if (strs.Length == 3)
@@ -76,7 +75,7 @@ namespace WindowsFormsStormtrooper
 			Pen pen = new Pen(Color.Black);
 			pen.Width = 1.0f;
 			Brush fill = new SolidBrush(Color.FromArgb(0, 0, 0));
-			Brush fill2 = new SolidBrush(MainColor) ;
+			Brush fill2 = new SolidBrush(MainColor);
 
 			g.FillRectangle(fill2, _startPosX + 30, _startPosY + 100, 190, 30); // корпус
 			g.DrawRectangle(pen, _startPosX + 30, _startPosY + 100, 190, 30);
@@ -149,7 +148,6 @@ namespace WindowsFormsStormtrooper
 			g.FillPolygon(fill2, pol5);
 			g.DrawPolygon(pen, pol5);
 		}
-
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
