@@ -23,7 +23,6 @@ namespace WindowsFormsStormtrooper
 
             return 0;
         }
-
         private int ComparerWarplane(Warplane x, Warplane y)
         {
             if (x.MaxSpeed != y.MaxSpeed)
@@ -40,7 +39,6 @@ namespace WindowsFormsStormtrooper
             }
             return 0;
         }
-
         private int ComparerStormtrooper(Stormtrooper x, Stormtrooper y)
         {
             var res = ComparerWarplane(x, y);

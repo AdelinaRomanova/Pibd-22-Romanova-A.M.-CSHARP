@@ -20,7 +20,6 @@ namespace WindowsFormsStormtrooper
 			Gun = gun;
 			Turbo = turbo;
 		}
-
 		public Stormtrooper(string info) : base(info)
 		{
 			string[] strs = info.Split(separator);
@@ -96,17 +95,14 @@ namespace WindowsFormsStormtrooper
 				g.FillPolygon(fill3, pol8);
 			}
 		}
-
 		public void SetDopColor(Color color)
 		{
 			DopColor = color;
 		} // Смена дополнительного цвета
-
 		public override string ToString()
 		{
 			return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Gun}{separator}{Turbo}";
 		}
-
 		public bool Equals(Stormtrooper other)
 		{
 			if (other == null)
@@ -131,8 +127,6 @@ namespace WindowsFormsStormtrooper
 			}
 			return true;
 		}
-			
-
 		public override bool Equals(Object obj)
 		{
 			if (obj == null)

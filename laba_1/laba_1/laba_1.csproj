@@ -80,7 +80,6 @@
     <Compile Include="HangarCollection.cs" />
     <Compile Include="HangarNotFoundException.cs" />
     <Compile Include="HangarOverflowException.cs" />
-    <Compile Include="PlaneNullException.cs" />
     <Compile Include="Stormtrooper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

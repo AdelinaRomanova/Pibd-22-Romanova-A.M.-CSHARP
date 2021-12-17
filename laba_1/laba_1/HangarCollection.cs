@@ -50,7 +50,6 @@ namespace WindowsFormsStormtrooper
                 }
             }
         } // Доступ к парковке
-
         public void SaveData(string filename)
         {
             if (File.Exists(filename))
@@ -84,7 +83,6 @@ namespace WindowsFormsStormtrooper
                 sw.Close();
             }
         }
-
         public void LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -105,7 +103,6 @@ namespace WindowsFormsStormtrooper
                 //если нет такой записи, то это не те данные
                 throw new FileFormatException("Неверный формат файла");
             }
-
             
             string key = string.Empty;
 
@@ -140,6 +137,5 @@ namespace WindowsFormsStormtrooper
 
             }
         }
-
     }
 }

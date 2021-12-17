@@ -22,7 +22,6 @@ namespace WindowsFormsStormtrooper
         private int _currentIndex; // Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
         public T Current => _places[_currentIndex];
         object IEnumerator.Current => _places[_currentIndex];
-
         public Hangar(int picWidht, int picHeight) {
             int widht = picWidht / _placeSizeWidht;
             int height = picHeight / _placeSizeHeight;
@@ -70,7 +69,6 @@ namespace WindowsFormsStormtrooper
                 g.DrawLine(pen, i * _placeSizeWidht, 0, i * _placeSizeWidht, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         } // Метод отрисовки разметки парковочных мест
-
         public T GetNext(int index)
         {
             if (index < 0 || index >= _places.Count)
@@ -79,24 +77,19 @@ namespace WindowsFormsStormtrooper
             }
             return _places[index];
         } // Функция получения элемента из списка
-
         public void Sort() => _places.Sort((IComparer<T>)new WarplaneComparer()); // Сортировка автомобилей на парковке
-
         public void Dispose()
         {
         } // Метод интерфейса IEnumerator, вызываемый при удалении объекта
-
         public bool MoveNext()
         {
             _currentIndex++;
             return (_currentIndex < _places.Count());
         }
-
         public void Reset()
         {
             _currentIndex = -1;
         }
-
         public IEnumerator<T> GetEnumerator()
         {
             return this;

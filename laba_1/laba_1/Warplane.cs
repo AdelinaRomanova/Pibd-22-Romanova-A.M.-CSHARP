@@ -14,7 +14,6 @@ namespace WindowsFormsStormtrooper
 			Weight = weight;
 			MainColor = mainColor;
 		}
-
 		public Warplane(string info)
 		{
 			string[] strs = info.Split(separator);
@@ -24,7 +23,6 @@ namespace WindowsFormsStormtrooper
 				Weight = Convert.ToInt32(strs[1]);
 				MainColor = Color.FromName(strs[2]);
 			}
-
 		}
 		protected Warplane(int maxSpeed, float weight, Color mainColor, int planeWidth, int planeHeight)
 		{
@@ -95,7 +93,7 @@ namespace WindowsFormsStormtrooper
 			p3 = new PointF(_startPosX + 100, _startPosY);
 			PointF p4 = new PointF(_startPosX + 120, _startPosY + 100);
 			PointF[] pol2 =
-			{
+				{
 					 p1,
 					 p2,
 					 p3,
@@ -110,7 +108,7 @@ namespace WindowsFormsStormtrooper
 			p3 = new PointF(_startPosX + 100, _startPosY + 230);
 			p4 = new PointF(_startPosX + 120, _startPosY + 130);
 			PointF[] pol3 =
-			{
+				{
 					 p1,
 					 p2,
 					 p3,
@@ -124,7 +122,7 @@ namespace WindowsFormsStormtrooper
 			p3 = new PointF(_startPosX + 220, _startPosY + 45);
 			p4 = new PointF(_startPosX + 220, _startPosY + 100);
 			PointF[] pol4 =
-			{
+				{
 					 p1,
 					 p2,
 					 p3,
@@ -138,7 +136,7 @@ namespace WindowsFormsStormtrooper
 			p3 = new PointF(_startPosX + 220, _startPosY + 185);
 			p4 = new PointF(_startPosX + 220, _startPosY + 130);
 			PointF[] pol5 =
-			{
+				{
 					 p1,
 					 p2,
 					 p3,
@@ -147,15 +145,12 @@ namespace WindowsFormsStormtrooper
 			g.FillPolygon(fill2, pol5);
 			g.DrawPolygon(pen, pol5);
 		}
-
 		public override string ToString()
 		{
 			return $"{MaxSpeed}{separator}{ Weight}{separator}{ MainColor.Name}";
 		}
-
 		public bool Equals(Warplane other)
 		{
-
 			if (other == null)
 			{
 				return false;
@@ -178,7 +173,6 @@ namespace WindowsFormsStormtrooper
 			}
 			return true;
 		}
-
 		public override bool Equals(Object obj)
 		{
 			if (obj == null)
