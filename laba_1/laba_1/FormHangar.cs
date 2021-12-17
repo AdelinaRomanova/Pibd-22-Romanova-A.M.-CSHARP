@@ -150,7 +150,7 @@ namespace WindowsFormsStormtrooper
                 }
             }
         }// Метод добавления машины
-        private void saveToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -163,46 +163,42 @@ namespace WindowsFormsStormtrooper
                 catch (Exception ex)
                 {
                     logger.Warn($"Неизвестная неудачная попытка сохранения файла");
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
-                {
-                    hangarCollection.LoadData(openFileDialog.FileName);
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Загружено из файла " + openFileDialog.FileName);
-                    ReloadLevels();
-                    Draw();
-                }
-                catch (FileNotFoundException ex)
-                {
-                    logger.Warn($"Попытка найти не существующий фаил для загрузки");
-                    MessageBox.Show(ex.Message, "Фаил отсутсвует", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-                catch (FileFormatException ex)
-                {
-                    logger.Warn($"Попытка загрузки файла с неверным форматом");
-                    MessageBox.Show(ex.Message, "Неверный формат файла", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-                catch (TypeLoadException ex)
-                {
-                    logger.Warn($"Попытка загрузки в ангар неизвестного типа обЪекта");
-                    MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    logger.Warn($"Неизвестная неудачная попытка загрузки файла");
-                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                hangarCollection.LoadData(openFileDialog.FileName);
+                MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Info("Загружено из файла " + openFileDialog.FileName);
+                ReloadLevels();
+                Draw();
+            }
+            catch (FileNotFoundException ex)
+            {
+                logger.Warn($"Попытка найти не существующий фаил для загрузки");
+                MessageBox.Show(ex.Message, "Фаил отсутсвует", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (FileFormatException ex)
+            {
+                logger.Warn($"Попытка загрузки файла с неверным форматом");
+                MessageBox.Show(ex.Message, "Неверный формат файла", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (TypeLoadException ex)
+            {
+                logger.Warn($"Попытка загрузки в ангар неизвестного типа обЪекта");
+                MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                logger.Warn($"Неизвестная неудачная попытка загрузки файла");
+                MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

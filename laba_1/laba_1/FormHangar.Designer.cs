@@ -54,9 +54,9 @@ namespace WindowsFormsStormtrooper
             // pictureBoxHangar
             // 
             this.pictureBoxHangar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxHangar.Location = new System.Drawing.Point(0, 30);
+            this.pictureBoxHangar.Location = new System.Drawing.Point(0, 28);
             this.pictureBoxHangar.Name = "pictureBoxHangar";
-            this.pictureBoxHangar.Size = new System.Drawing.Size(1206, 587);
+            this.pictureBoxHangar.Size = new System.Drawing.Size(1206, 589);
             this.pictureBoxHangar.TabIndex = 0;
             this.pictureBoxHangar.TabStop = false;
             // 
@@ -163,7 +163,7 @@ namespace WindowsFormsStormtrooper
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1382, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1382, 28);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -173,22 +173,22 @@ namespace WindowsFormsStormtrooper
             this.saveToolStripMenuItem,
             this.openToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "Сохранить";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click_1);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "Загрузить";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
