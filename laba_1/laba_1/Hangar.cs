@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections;
+using System.Collections;                                                                                                                                                                                                                   коллекции
 
 namespace WindowsFormsStormtrooper
 {
@@ -96,6 +96,7 @@ namespace WindowsFormsStormtrooper
         {
             _currentIndex = -1;
         }
+
         public IEnumerator<T> GetEnumerator()
         {
             return this;

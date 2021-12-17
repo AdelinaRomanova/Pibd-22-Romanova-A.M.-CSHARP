@@ -131,6 +131,7 @@ namespace WindowsFormsStormtrooper
 			}
 			return true;
 		}
+			
 
 		public override bool Equals(Object obj)
 		{
